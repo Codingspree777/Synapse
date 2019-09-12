@@ -7,7 +7,7 @@ const headerStyle = {
 const Header = () => {
   return (
       <div>
-        <h1 style={headerStyle} className="header"> Lumber Exotics Co. </h1>
+        <h1 style={headerStyle} className="header"> Synapse </h1>
       </div>
   );
 };

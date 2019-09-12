@@ -48,47 +48,6 @@ export const getData = () => {
       })
   }
 }
-
-// test action creator - wood
-/*export const getWood = value => {
-  return {
-    type: types.GET_WOOD,
-    payload: [ {
-      type: 'maple',
-      image: 'something.jpg',
-      description: 'rough',
-      price: '400',
-      inStock: true
-    }, {
-      type: 'ash',
-      image: 'something.jpg',
-      description: 'simple wood',
-      price: '250',
-      inStock: true
-    } ],
-  }
-};*/
-
-// test action creator - stain
-/*export const getStain = value => {
-  return {
-    type: types.GET_STAIN,
-    payload: [ {
-      type: 'red',
-      image: 'test.jpg',
-      description: 'red',
-      price: '100',
-      inStock: true,
-    }, {
-      type: 'purple',
-      image: 'test.jpg',
-      description: 'purple',
-      price: '100',
-      inStock: true,
-    } ],
-  }
-};*/
-
 export const submitOrder = (value) => {
   return {
     type: types.SUBMIT_ORDER,
