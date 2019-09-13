@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Home = () => (
+const Login = () => (
   <div>
     <div id="containerHome">
     <h1>A keyboard wrist rest that compliments your style</h1>
@@ -10,4 +10,4 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+export default Login;
