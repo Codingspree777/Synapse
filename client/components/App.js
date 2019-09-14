@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from './header';
-import Login from '../containers/login';
-//import DashBoardContainer from '../containers/dashBoard'
+import LoginPage from '../containers/loginContainer';
+//import DashBoardContainer from '../containers/dashBoardContainer'
 import './styles.css'
 
 
@@ -13,7 +13,7 @@ const App = () => {
       <div>
       <Header/>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={LoginPage} />
           {/* <Route exact path="/dashBoard" component={DashBoardContainer} /> */}
         </Switch>
       </div>
