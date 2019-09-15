@@ -2,7 +2,7 @@ import * as types from "../constants/actionTypes";
 
 const initialState = {
   user: [],
-  refresher_token: ''
+  view:[],
 };
 
 export default function userReducer(state = initialState, action) {
@@ -15,7 +15,7 @@ export default function userReducer(state = initialState, action) {
       case types.View_Acct:
       return {
         ...state,
-        refresher_token: action.payload
+        view: action.payload
       };
     default:
       return state;

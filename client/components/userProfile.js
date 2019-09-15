@@ -3,8 +3,8 @@ import React, { Component } from "react";
 const UserProfile = props => {
   return (
     <div className="profile">
-     <h1>Welcome, {props.name} to Simple Banking</h1>
-     <img src="https://imgur.com/Lr5IybM.png"></img>
+      <h1>Welcome, {props.name} to Simple Banking</h1>
+      <img src="https://imgur.com/Lr5IybM.png"></img>
       <ul>
         <li className="profileList"> ID: {props.id} </li>
         <li className="profileList"> Email: {props.email} </li>

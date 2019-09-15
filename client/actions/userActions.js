@@ -16,18 +16,19 @@ export const getUser = () => {
   }
 };
 
-export const viewAccts = (str) => {
+export const viewAccounts = () => {
   return (dispatch) => {
-    axios.post('/api/view', {
-      "refresh_token": str
-    }).catch(err => {
-      console.log(err);
-    })
-    .then(response => {
-      dispatch({
-        type: types.View_Acct,
-        payload: response.data
+    axios.get('/api/view')
+      .catch(err => {
+        console.log(err);
       })
-    });
+      .then(response => {
+        dispatch({
+          type: types.View_Acct,
+          payload: response.data
+        })
+      });
   }
-}
+};
+
+

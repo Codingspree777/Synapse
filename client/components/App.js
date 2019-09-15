@@ -3,6 +3,7 @@ import { Link, BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from './header';
 import LoginPage from '../containers/loginContainer';
 import UserDetails from '../containers/userContainer';
+import ViewDetails from '../containers/viewContainer';
 import './styles.css'
 
 
@@ -15,6 +16,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/user" component={UserDetails} />
+          <Route exact path="/viewaccounts" component={ViewDetails} />
         </Switch>
       </div>
     </Router>
