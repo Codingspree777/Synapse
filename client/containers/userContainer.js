@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
-import DashBoard from '../components/dashBoard';
+import UserProfile from '../components/userProfile';
 
 class UserDetails extends Component {
 
@@ -38,13 +38,12 @@ class UserDetails extends Component {
       }
   
     render() {
-      let {name, id, docId} = this.state;
-      console.log(this.state)
+      let {name, id, email, docId, permission} = this.state
+      const profileDetails =  <UserProfile name={name} id={id} email={email} docId={docId} permission={permission}/>
       if(name){
       return (
         <div>
-        <h1>Welcome, {name} to Simple Banking</h1>
-        <DashBoard></DashBoard>
+          {profileDetails}
         <button onClick={this.viewAccts}>view accounts</button>
         </div>
       )

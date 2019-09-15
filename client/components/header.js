@@ -9,7 +9,7 @@ const Header = () => {
     <div>
       <h1 style={headerStyle} className="header">
         {" "}
-        Synapse{" "}
+        Simple Banking{" "}
       </h1>
     </div>
   );
