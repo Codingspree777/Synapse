@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 
 const DashBoard = props => {
-  return <h1>Dash</h1>;
+  return (
+    <div>
+      <div>Profile goes here</div>
+      <div>Loan goes here</div>
+    </div>
+
+  )
 };
 
 export default DashBoard;

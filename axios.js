@@ -10,7 +10,7 @@ const getApi = async () => {
         'X-SP-USER' : oauth.concat(apiConfig.fingerprintKey)
         }
   try {
-    return await axios.get('https://uat-api.synapsefi.com/v3.1/users/5d7beab7515fa700730acb82', {headers})
+    return await axios.get('https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b', {headers})
   } catch (error) {
     console.error(error)
   }
@@ -18,7 +18,7 @@ const getApi = async () => {
 
 const seeResults = async () => {
   const results = await getApi()
-  console.log(results.data.refresh_token);
+  console.log(results);
 }
 
 seeResults()
