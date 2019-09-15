@@ -16,6 +16,7 @@ export const getUser = () => {
   }
 };
 
+
 export const viewAccounts = () => {
   return (dispatch) => {
     axios.get('/api/view')
