@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes';
+import * as types from "../constants/actionTypes";
 
 const initialState = {
   isLoginSuccess: false,
@@ -6,11 +6,11 @@ const initialState = {
   loginError: null
 };
 
-export default function Loginreducer(state = initialState, action) {
+export default function LoginReducer(state = initialState, action) {
   switch (action.type) {
     case types.SET_LOGIN_PENDING:
-      return  {
-         ...state,
+      return {
+        ...state,
         isLoginPending: action.payload
       };
 

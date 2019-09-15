@@ -1,14 +1,17 @@
-import React from 'react';
+import React from "react";
 
 const headerStyle = {
-  color: 'brown'
-}
+  color: "brown"
+};
 
 const Header = () => {
   return (
-      <div>
-        <h1 style={headerStyle} className="header"> Synapse </h1>
-      </div>
+    <div>
+      <h1 style={headerStyle} className="header">
+        {" "}
+        Synapse{" "}
+      </h1>
+    </div>
   );
 };
 
