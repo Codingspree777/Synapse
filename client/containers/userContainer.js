@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import * as actions from "../actions/index";
-import UserProfile from "../components/userProfile";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import * as actions from '../actions/index';
+import UserProfile from '../components/userProfile';
 
 class UserDetails extends Component {
   constructor(props) {
@@ -17,13 +17,13 @@ class UserDetails extends Component {
     this.props.getUser();
     setTimeout(() => {
       this.setState({ loaded: true });
-    }, 1000);
+    }, 1200);
   }
 
   //route to view accounts list and API call to Synapse get all nodes
   viewAccts() {
     const { history } = this.props;
-    history.push("/viewaccounts");
+    history.push('/viewaccounts');
   }
   content() {
     const profileDetails = (

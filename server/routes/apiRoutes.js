@@ -5,7 +5,7 @@ const apiConfig = require("../../apiKeys");
 
 let oauth = "";
 
-//initial call to Synapse API to get user details and refresh token, then second to API to get oauth
+//initial call to Synapse API to get user details and refresh token, then second call to API to get oauth
 router.get("/user", (req, res) => {
   const getApi = async () => {
     const headers = {

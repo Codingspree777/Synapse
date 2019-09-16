@@ -1,5 +1,5 @@
-import * as types from "../constants/actionTypes";
-import { withRouter } from "react-router";
+import * as types from '../constants/actionTypes';
+import { withRouter } from 'react-router';
 
 export function login(email, password) {
   return dispatch => {
