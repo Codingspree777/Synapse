@@ -1,9 +1,11 @@
-import * as types from '../constants/actionTypes';
-import axios from 'axios';
+import * as types from "../constants/actionTypes";
+import axios from "axios";
 
+//doing an API call local server apiRoutes
 export const getUser = () => {
-  return (dispatch) => {
-    axios.get('/api/user')
+  return dispatch => {
+    axios
+      .get("/api/user")
       .catch(err => {
         console.log(err);
       })
@@ -11,15 +13,15 @@ export const getUser = () => {
         dispatch({
           type: types.GET_USER,
           payload: response.data
-        })
+        });
       });
-  }
+  };
 };
 
-
 export const viewAccounts = () => {
-  return (dispatch) => {
-    axios.get('/api/view')
+  return dispatch => {
+    axios
+      .get("/api/view")
       .catch(err => {
         console.log(err);
       })
@@ -27,9 +29,24 @@ export const viewAccounts = () => {
         dispatch({
           type: types.View_Acct,
           payload: response.data
-        })
+        });
       });
-  }
+  };
 };
 
-
+//Need to a POST instead of a GET, because to pass in the nodeId
+export const viewTransactions = str => {
+  return dispatch => {
+    axios
+      .post("/api/transactions", { str })
+      .catch(err => {
+        console.log(err);
+      })
+      .then(response => {
+        dispatch({
+          type: types.View_Transactions,
+          payload: response.data
+        });
+      });
+  };
+};

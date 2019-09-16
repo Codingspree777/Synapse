@@ -50,6 +50,7 @@ router.get("/user", (req, res) => {
   seeResults();
 });
 
+//API call to get User's accounts
 router.get("/view", (req, res) => {
   const getApi = async () => {
     const headers = {
@@ -70,6 +71,31 @@ router.get("/view", (req, res) => {
   const seeResults = async () => {
     const results = await getApi();
     res.send(results.data);
+  };
+  seeResults();
+});
+
+//API call GET to view Node transaction accounts, local router is post in order to pass in the node ID
+router.post("/transactions", (req, res) => {
+  const getApi = async () => {
+    const headers = {
+      "X-SP-GATEWAY": apiConfig.clientKey,
+      "X-SP-USER-IP": apiConfig.IPkey,
+      "X-SP-USER": oauth.concat(apiConfig.fingerprintKey)
+    };
+    try {
+      return await axios.get(
+        `https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b/nodes/${req.body.str}/trans`,
+        { headers }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const seeResults = async () => {
+    const results = await getApi();
+    console.log(results.data);
   };
   seeResults();
 });

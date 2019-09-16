@@ -6,7 +6,8 @@ import userReducer from "./userReducer";
 const reducers = combineReducers({
   user: userReducer,
   login: loginReducer,
-  view: userReducer
+  view: userReducer,
+  str: userReducer
 });
 
 export default reducers;

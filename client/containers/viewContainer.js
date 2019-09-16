@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import * as actions from '../actions/index';
-import Accounts from '../components/accounts';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import * as actions from "../actions/index";
+import Accounts from "../components/accounts";
 
 class ViewDetails extends Component {
   constructor(props) {
@@ -10,6 +10,8 @@ class ViewDetails extends Component {
     this.state = {
       loaded: false
     };
+    this.content = this.content.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -19,18 +21,40 @@ class ViewDetails extends Component {
     }, 1000);
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    this.props.viewTransactions(e.target.value);
+    const { history } = this.props;
+    history.push("/transactions");
+  }
+
   content() {
-   console.log(this.props.view.nodes)
-    const accountsList = this.props.view.nodes.map(el => (
-      <Accounts type={el.type} name={el.info.nickname} status={el.allowed} balance={el.info.balance.amount} curr={el.info.balance.currency}
-      />
-    ))
+    const accountsList = [];
+    for (let i = 0; i < this.props.view.nodes.length; i++) {
+      let el = this.props.view.nodes[i];
+      accountsList.push(
+        <Accounts
+          id={el._id}
+          value={el._id}
+          type={el.type}
+          name={el.info.nickname}
+          status={el.allowed}
+          balance={el.info.balance.amount}
+          curr={el.info.balance.currency}
+        />
+      );
+      accountsList.push(
+        <button id={el._id} value={el._id} onClick={this.handleClick}>
+          View Transactions
+        </button>
+      );
+    }
 
     return (
       <div>
-        <img src='https://imgur.com/Lr5IybM.png'></img>
+        <img src="https://imgur.com/Lr5IybM.png"></img>
         {this.props.user.client.name}
-        { accountsList }
+        {accountsList}
       </div>
     );
   }
@@ -49,7 +73,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    viewAccounts: () => dispatch(actions.viewAccounts())
+    viewAccounts: () => dispatch(actions.viewAccounts()),
+    viewTransactions: val => dispatch(actions.viewTransactions(val))
   };
 };
 
