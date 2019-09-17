@@ -95,7 +95,7 @@ router.post("/transactions", (req, res) => {
 
   const seeResults = async () => {
     const results = await getApi();
-    console.log(results.data);
+    res.send(results.data);
   };
   seeResults();
 });

@@ -45,7 +45,7 @@ export const viewTransactions = str => {
       })
       .then(response => {
         dispatch({
-          type: types.View_Acct,
+          type: types.View_Transactions,
           payload: response.data
         });
       });

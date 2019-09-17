@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 const Transactions = props => {
   return (
     <div className='transactions'>
-    <h1>Transaction</h1>
+    <ul>
+      <li className='transaction'></li>
+    </ul>
     </div>
   );
 };

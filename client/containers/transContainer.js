@@ -26,6 +26,7 @@ class TransDetails extends Component {
   }
 
   content = () => {
+    console.log(this.props.transactions)
     return (
       <div>
         <button id={'logput'} onClick={this.logout}>
@@ -46,8 +47,8 @@ class TransDetails extends Component {
 const mapStateToProps = store => {
   return {
     user: store.user.user,
-    view: store.view.view,
-    isLoginSuccess: store.login.isLoginSuccess
+    isLoginSuccess: store.login.isLoginSuccess,
+    transactions: store.transactions.transactions
   };
 };
 

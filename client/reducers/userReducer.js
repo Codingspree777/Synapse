@@ -3,7 +3,7 @@ import * as types from "../constants/actionTypes";
 const initialState = {
   user: [],
   view:[],
-  str:''
+  transactions: []
 };
 
 export default function userReducer(state = initialState, action) {
@@ -21,7 +21,7 @@ export default function userReducer(state = initialState, action) {
       case types.View_Transactions:
       return {
         ...state,
-        str: action.payload
+        transactions: action.payload
       };
     default:
       return state;
