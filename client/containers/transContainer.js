@@ -16,7 +16,7 @@ class TransDetails extends Component {
     //this.props.viewAccounts();
     setTimeout(() => {
       this.setState({ loaded: true });
-    }, 1000);
+    }, 1100);
   };
 
   goback = () => {
@@ -31,6 +31,14 @@ class TransDetails extends Component {
   };
 
   content = () => {
+    const convertDate = (obj) => {
+      const a = new Date(obj);
+      const b = a.toLocaleTimeString('en-US');
+      const c = b.slice(9,12);
+      const d = a.toString().slice(4,21);
+      return d + ' ' + c;
+    }
+    
     const transColumns = this.props.transactions.trans.map(el => (
       <Transactions
         id={el._id}
@@ -39,9 +47,10 @@ class TransDetails extends Component {
         amount={el.amount.amount}
         curr={el.amount.currency}
         status={el.timeline[3].status}
-        date={el.timeline[3].date}
+        date={convertDate(el.timeline[3].date)}
       />
     ));
+  
     return (
       <div>
         <img src='https://imgur.com/Lr5IybM.png'></img>
@@ -54,13 +63,16 @@ class TransDetails extends Component {
   render() {
     return (
       <div>
-        {' '}
-        <button id={'goback'} onClick={this.goback}>
-          goback
-        </button>
+        <span>
         <button id={'logput'} onClick={this.logout}>
           logout
         </button>
+        </span>
+        <span>
+        <button id={'goback'} onClick={this.goback}>
+          goback
+        </button>
+        </span>
         {this.state.loaded ? this.content() : null}
       </div>
     );

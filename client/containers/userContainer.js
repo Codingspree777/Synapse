@@ -42,11 +42,14 @@ class UserDetails extends Component {
     );
     return (
       <div>
+         <span>
         <button id={'logput'} onClick={this.logout}>
           logout
         </button>
+        </span>
+        <span><button onClick={this.viewAccts}>View Accounts</button></span>
         {profileDetails}
-        <button onClick={this.viewAccts}>View Accounts</button>
+        
       </div>
     );
   };

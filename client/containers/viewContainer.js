@@ -16,7 +16,7 @@ class ViewDetails extends Component {
     this.props.viewAccounts();
     setTimeout(() => {
       this.setState({ loaded: true });
-    }, 1000);
+    }, 1200);
   };
   goback = () => {
     const { history } = this.props;
@@ -70,12 +70,16 @@ class ViewDetails extends Component {
   render() {
     return (
       <div>
-        <button id={'goback'} onClick={this.goback}>
-          goback
-        </button>
+          <span>
         <button id={'logput'} onClick={this.logout}>
           logout
         </button>
+        </span>
+        <span>
+        <button id={'goback'} onClick={this.goback}>
+          goback
+        </button>
+        </span>
         {this.state.loaded ? this.content() : null}
       </div>
     );

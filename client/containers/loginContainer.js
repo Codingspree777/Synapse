@@ -34,6 +34,7 @@ class LoginPage extends Component {
       history.push('/user');
     }
     return (
+      <div className='background'>
       <form name='loginForm'>
         <div className='form-group-collection'>
           <div className='form-group'>
@@ -65,6 +66,7 @@ class LoginPage extends Component {
           {loginError && <div>{loginError.message}</div>}
         </div>
       </form>
+      </div>
     );
   }
 }
