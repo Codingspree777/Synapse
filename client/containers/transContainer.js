@@ -31,12 +31,22 @@ class TransDetails extends Component {
   };
 
   content = () => {
-    console.log(this.props.transactions);
+    const transColumns = this.props.transactions.trans.map(el => (
+      <Transactions
+        id={el._id}
+        from={el.from.user.legal_names[0]}
+        to={el.to.user.legal_names[0]}
+        amount={el.amount.amount}
+        curr={el.amount.currency}
+        status={el.timeline[3].status}
+        date={el.timeline[3].date}
+      />
+    ));
     return (
       <div>
         <img src="https://imgur.com/Lr5IybM.png"></img>
         {this.props.user.client.name}
-        <Transactions></Transactions>
+        {transColumns}
       </div>
     );
   };
@@ -68,7 +78,6 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     login: (email, password) => dispatch(actions.login(email, password))
-    //viewAccounts: () => dispatch(actions.viewAccounts())
   };
 };
 

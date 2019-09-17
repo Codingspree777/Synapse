@@ -103,3 +103,4 @@ export default withRouter(
     mapDispatchToProps
   )(ViewDetails)
 );
+   
