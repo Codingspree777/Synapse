@@ -17,19 +17,19 @@ class UserDetails extends Component {
     setTimeout(() => {
       this.setState({ loaded: true });
     }, 1000);
-  }
- 
+  };
+
   logout = () => {
     this.props.login(', ');
     const { history } = this.props;
     history.push('/login');
-  }
+  };
 
   //route to view accounts list and API call to Synapse get all nodes
   viewAccts = () => {
     const { history } = this.props;
     history.push('/viewaccounts');
-  }
+  };
   content = () => {
     const profileDetails = (
       <UserProfile
@@ -49,7 +49,7 @@ class UserDetails extends Component {
         <button onClick={this.viewAccts}>View Accounts</button>
       </div>
     );
-  }
+  };
   render() {
     return <div>{this.state.loaded ? this.content() : null}</div>;
   }
