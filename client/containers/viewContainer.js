@@ -1,17 +1,20 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import * as actions from "../actions/index";
-import Accounts from "../components/accounts";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Redirect } from 'react-router-dom';
+import * as actions from '../actions/index';
+import Accounts from '../components/accounts';
 
 class ViewDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false
+      loaded: false,
+      redirect: false
     };
     this.content = this.content.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -21,11 +24,18 @@ class ViewDetails extends Component {
     }, 1000);
   }
 
+  logout() {
+    this.props.login(', ');
+    this.setState({
+      redirect: true
+    });
+  }
+
   handleClick(e) {
     e.preventDefault();
     this.props.viewTransactions(e.target.value);
     const { history } = this.props;
-    history.push("/transactions");
+    history.push('/transactions');
   }
 
   content() {
@@ -52,7 +62,10 @@ class ViewDetails extends Component {
 
     return (
       <div>
-        <img src="https://imgur.com/Lr5IybM.png"></img>
+        <button id={'logput'} onClick={this.logout}>
+          logout
+        </button>
+        <img src='https://imgur.com/Lr5IybM.png'></img>
         {this.props.user.client.name}
         {accountsList}
       </div>
@@ -60,6 +73,9 @@ class ViewDetails extends Component {
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect strict to='/login' />;
+    }
     return <div>{this.state.loaded ? this.content() : null}</div>;
   }
 }
@@ -73,6 +89,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    login: (email, password) => dispatch(actions.login(email, password)),
     viewAccounts: () => dispatch(actions.viewAccounts()),
     viewTransactions: val => dispatch(actions.viewTransactions(val))
   };

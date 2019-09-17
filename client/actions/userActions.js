@@ -1,6 +1,7 @@
 import * as types from "../constants/actionTypes";
 import axios from "axios";
 
+// async action creator with redux thunk
 //doing an API call local server apiRoutes
 export const getUser = () => {
   return dispatch => {
@@ -34,7 +35,7 @@ export const viewAccounts = () => {
   };
 };
 
-//Need to a POST instead of a GET, because to pass in the nodeId
+//Need to do a POST instead of a GET, because to pass in the nodeId
 export const viewTransactions = str => {
   return dispatch => {
     axios
@@ -44,7 +45,7 @@ export const viewTransactions = str => {
       })
       .then(response => {
         dispatch({
-          type: types.View_Transactions,
+          type: types.View_Acct,
           payload: response.data
         });
       });

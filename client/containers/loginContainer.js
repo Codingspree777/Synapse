@@ -82,8 +82,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => dispatch(actions.login(email, password)),
-    getUser: () => dispatch(actions.getUser())
+    login: (email, password) => dispatch(actions.login(email, password))
   };
 };
 
