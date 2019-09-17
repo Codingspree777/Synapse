@@ -19,6 +19,11 @@ class TransDetails extends Component {
     }, 1000);
   }
 
+  goback = () => {
+    const {history} = this.props;
+    history.push('/viewaccounts')
+  }
+
   logout = () => {
     this.props.login(', ');
     const {history} = this.props;
@@ -29,6 +34,9 @@ class TransDetails extends Component {
     console.log(this.props.transactions)
     return (
       <div>
+        <button id={'goback'} onClick={this.goback}>
+          goback
+        </button>
         <button id={'logput'} onClick={this.logout}>
           logout
         </button>

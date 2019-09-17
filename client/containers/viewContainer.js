@@ -18,6 +18,10 @@ class ViewDetails extends Component {
       this.setState({ loaded: true });
     }, 1000);
   }
+  goback = () => {
+    const {history} = this.props;
+    history.push('/user')
+  }
 
   logout = () => {
     this.props.login(', ');
@@ -56,6 +60,9 @@ class ViewDetails extends Component {
 
     return (
       <div>
+        <button id={'goback'} onClick={this.goback}>
+          goback
+        </button>
         <button id={'logput'} onClick={this.logout}>
           logout
         </button>

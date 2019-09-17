@@ -18,6 +18,7 @@ class UserDetails extends Component {
       this.setState({ loaded: true });
     }, 1000);
   }
+ 
   logout = () => {
     this.props.login(', ');
     const { history } = this.props;
