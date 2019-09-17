@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import * as actions from '../actions/index';
-import Accounts from '../components/accounts';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import * as actions from "../actions/index";
+import Accounts from "../components/accounts";
 
 class ViewDetails extends Component {
   constructor(props) {
@@ -17,24 +17,24 @@ class ViewDetails extends Component {
     setTimeout(() => {
       this.setState({ loaded: true });
     }, 1000);
-  }
+  };
   goback = () => {
-    const {history} = this.props;
-    history.push('/user')
-  }
+    const { history } = this.props;
+    history.push("/user");
+  };
 
   logout = () => {
-    this.props.login(', ');
+    this.props.login(", ");
     const { history } = this.props;
-    history.push('/login');
-  }
+    history.push("/login");
+  };
 
   handleClick = e => {
     e.preventDefault();
     this.props.viewTransactions(e.target.value);
     const { history } = this.props;
-    history.push('/transactions');
-  }
+    history.push("/transactions");
+  };
 
   content = () => {
     const accountsList = [];
@@ -60,21 +60,25 @@ class ViewDetails extends Component {
 
     return (
       <div>
-        <button id={'goback'} onClick={this.goback}>
-          goback
-        </button>
-        <button id={'logput'} onClick={this.logout}>
-          logout
-        </button>
-        <img src='https://imgur.com/Lr5IybM.png'></img>
+        <img src="https://imgur.com/Lr5IybM.png"></img>
         {this.props.user.client.name}
         {accountsList}
       </div>
     );
-  }
+  };
 
   render() {
-    return <div>{this.state.loaded ? this.content() : null}</div>;
+    return (
+      <div>
+        <button id={"goback"} onClick={this.goback}>
+          goback
+        </button>
+        <button id={"logput"} onClick={this.logout}>
+          logout
+        </button>
+        {this.state.loaded ? this.content() : null}
+      </div>
+    );
   }
 }
 

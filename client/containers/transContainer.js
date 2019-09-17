@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import * as actions from '../actions/index';
-import Transactions from '../components/transactions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import * as actions from "../actions/index";
+import Transactions from "../components/transactions";
 
 class TransDetails extends Component {
   constructor(props) {
@@ -17,38 +17,43 @@ class TransDetails extends Component {
     setTimeout(() => {
       this.setState({ loaded: true });
     }, 1000);
-  }
+  };
 
   goback = () => {
-    const {history} = this.props;
-    history.push('/viewaccounts')
-  }
+    const { history } = this.props;
+    history.push("/viewaccounts");
+  };
 
   logout = () => {
-    this.props.login(', ');
-    const {history} = this.props;
-    history.push('/login')
-  }
+    this.props.login(", ");
+    const { history } = this.props;
+    history.push("/login");
+  };
 
   content = () => {
-    console.log(this.props.transactions)
+    console.log(this.props.transactions);
     return (
       <div>
-        <button id={'goback'} onClick={this.goback}>
-          goback
-        </button>
-        <button id={'logput'} onClick={this.logout}>
-          logout
-        </button>
-        <img src='https://imgur.com/Lr5IybM.png'></img>
+        <img src="https://imgur.com/Lr5IybM.png"></img>
         {this.props.user.client.name}
         <Transactions></Transactions>
       </div>
     );
-  }
+  };
 
   render() {
-    return <div> {this.state.loaded ? this.content() : null}</div>;
+    return (
+      <div>
+        {" "}
+        <button id={"goback"} onClick={this.goback}>
+          goback
+        </button>
+        <button id={"logput"} onClick={this.logout}>
+          logout
+        </button>
+        {this.state.loaded ? this.content() : null}
+      </div>
+    );
   }
 }
 
