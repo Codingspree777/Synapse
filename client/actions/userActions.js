@@ -1,12 +1,12 @@
-import * as types from "../constants/actionTypes";
-import axios from "axios";
+import * as types from '../constants/actionTypes';
+import axios from 'axios';
 
 // async action creator with redux thunk
 //doing an API call local server apiRoutes
 export const getUser = () => {
   return dispatch => {
     axios
-      .get("/api/user")
+      .get('/api/user')
       .catch(err => {
         console.log(err);
       })
@@ -22,7 +22,7 @@ export const getUser = () => {
 export const viewAccounts = () => {
   return dispatch => {
     axios
-      .get("/api/view")
+      .get('/api/view')
       .catch(err => {
         console.log(err);
       })
@@ -39,7 +39,7 @@ export const viewAccounts = () => {
 export const viewTransactions = str => {
   return dispatch => {
     axios
-      .post("/api/transactions", { str })
+      .post('/api/transactions', { str })
       .catch(err => {
         console.log(err);
       })

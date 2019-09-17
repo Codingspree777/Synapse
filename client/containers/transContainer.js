@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import * as actions from "../actions/index";
-import Transactions from "../components/transactions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import * as actions from '../actions/index';
+import Transactions from '../components/transactions';
 
 class TransDetails extends Component {
   constructor(props) {
@@ -21,13 +21,13 @@ class TransDetails extends Component {
 
   goback = () => {
     const { history } = this.props;
-    history.push("/viewaccounts");
+    history.push('/viewaccounts');
   };
 
   logout = () => {
-    this.props.login(", ");
+    this.props.login(', ');
     const { history } = this.props;
-    history.push("/login");
+    history.push('/login');
   };
 
   content = () => {
@@ -44,7 +44,7 @@ class TransDetails extends Component {
     ));
     return (
       <div>
-        <img src="https://imgur.com/Lr5IybM.png"></img>
+        <img src='https://imgur.com/Lr5IybM.png'></img>
         {this.props.user.client.name}
         {transColumns}
       </div>
@@ -54,11 +54,11 @@ class TransDetails extends Component {
   render() {
     return (
       <div>
-        {" "}
-        <button id={"goback"} onClick={this.goback}>
+        {' '}
+        <button id={'goback'} onClick={this.goback}>
           goback
         </button>
-        <button id={"logput"} onClick={this.logout}>
+        <button id={'logput'} onClick={this.logout}>
           logout
         </button>
         {this.state.loaded ? this.content() : null}

@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import * as actions from "../actions/index";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import * as actions from '../actions/index';
 
 class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
   }
 
@@ -31,35 +31,35 @@ class LoginPage extends Component {
     let { email, password } = this.state;
     let { isLoginPending, isLoginSuccess, loginError, history } = this.props;
     if (isLoginSuccess) {
-      history.push("/user");
+      history.push('/user');
     }
     return (
-      <form name="loginForm">
-        <div className="form-group-collection">
-          <div className="form-group">
+      <form name='loginForm'>
+        <div className='form-group-collection'>
+          <div className='form-group'>
             <label>Email:</label>
             <input
-              type="email"
-              name="email"
+              type='email'
+              name='email'
               onChange={this.emailChange}
               value={email}
             />
           </div>
 
-          <div className="form-group">
+          <div className='form-group'>
             <label>Password:</label>
             <input
-              type="password"
-              name="password"
+              type='password'
+              name='password'
               onChange={this.passwordChange}
               value={password}
             />
           </div>
         </div>
-        <button className="button" onClick={this.submitLogin}>
+        <button className='button' onClick={this.submitLogin}>
           Login
         </button>
-        <div className="message">
+        <div className='message'>
           {isLoginPending && <div>Please wait...</div>}
           {isLoginSuccess && <div>Success.</div>}
           {loginError && <div>{loginError.message}</div>}

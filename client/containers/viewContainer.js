@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import * as actions from "../actions/index";
-import Accounts from "../components/accounts";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import * as actions from '../actions/index';
+import Accounts from '../components/accounts';
 
 class ViewDetails extends Component {
   constructor(props) {
@@ -20,20 +20,20 @@ class ViewDetails extends Component {
   };
   goback = () => {
     const { history } = this.props;
-    history.push("/user");
+    history.push('/user');
   };
 
   logout = () => {
-    this.props.login(", ");
+    this.props.login(', ');
     const { history } = this.props;
-    history.push("/login");
+    history.push('/login');
   };
 
   handleClick = e => {
     e.preventDefault();
     this.props.viewTransactions(e.target.value);
     const { history } = this.props;
-    history.push("/transactions");
+    history.push('/transactions');
   };
 
   content = () => {
@@ -60,7 +60,7 @@ class ViewDetails extends Component {
 
     return (
       <div>
-        <img src="https://imgur.com/Lr5IybM.png"></img>
+        <img src='https://imgur.com/Lr5IybM.png'></img>
         {this.props.user.client.name}
         {accountsList}
       </div>
@@ -70,10 +70,10 @@ class ViewDetails extends Component {
   render() {
     return (
       <div>
-        <button id={"goback"} onClick={this.goback}>
+        <button id={'goback'} onClick={this.goback}>
           goback
         </button>
-        <button id={"logput"} onClick={this.logout}>
+        <button id={'logput'} onClick={this.logout}>
           logout
         </button>
         {this.state.loaded ? this.content() : null}
@@ -103,4 +103,3 @@ export default withRouter(
     mapDispatchToProps
   )(ViewDetails)
 );
-   

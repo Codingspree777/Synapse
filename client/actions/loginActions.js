@@ -16,35 +16,35 @@ export const login = (email, password) => {
       }
     });
   };
-}
+};
 
-const setLoginPending = (value) => {
+const setLoginPending = value => {
   return {
     type: types.SET_LOGIN_PENDING,
     payload: value
   };
-}
+};
 
-export const setLoginSuccess = (value) => {
+export const setLoginSuccess = value => {
   return {
     type: types.SET_LOGIN_SUCCESS,
     payload: value
   };
-}
+};
 
-const setLoginError = (value) => {
+const setLoginError = value => {
   return {
     type: types.SET_LOGIN_ERROR,
     payload: value
   };
-}
+};
 
 const callLoginApi = (email, password, callback) => {
   setTimeout(() => {
-    if (email === "admin@example.com" && password === "admin") {
+    if (email === 'admin@example.com' && password === 'admin') {
       return callback(null);
     } else {
-      return callback(new Error("Invalid email and password"));
+      return callback(new Error('Invalid email and password'));
     }
   }, 1000);
-}
+};
