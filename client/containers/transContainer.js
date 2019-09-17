@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Redirect } from 'react-router-dom';
 import * as actions from '../actions/index';
 import Transactions from '../components/transactions';
 
@@ -9,27 +8,24 @@ class TransDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false,
-      redirect: false
+      loaded: false
     };
-    this.logout = this.logout.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     //this.props.viewAccounts();
     setTimeout(() => {
       this.setState({ loaded: true });
     }, 1000);
   }
 
-  logout() {
+  logout = () => {
     this.props.login(', ');
-    this.setState({
-      redirect: true
-    });
+    const {history} = this.props;
+    history.push('/login')
   }
 
-  content() {
+  content = () => {
     return (
       <div>
         <button id={'logput'} onClick={this.logout}>
@@ -43,9 +39,6 @@ class TransDetails extends Component {
   }
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect strict to='/login' />;
-    }
     return <div> {this.state.loaded ? this.content() : null}</div>;
   }
 }

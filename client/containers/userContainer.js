@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Redirect } from 'react-router-dom';
 import * as actions from '../actions/index';
 import UserProfile from '../components/userProfile';
 
@@ -9,32 +8,28 @@ class UserDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false,
-      redirect: false
+      loaded: false
     };
-    this.viewAccts = this.viewAccts.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.props.getUser();
     setTimeout(() => {
       this.setState({ loaded: true });
-    }, 1200);
+    }, 1000);
   }
-  logout() {
+  logout = () => {
     this.props.login(', ');
-    this.setState({
-      redirect: true
-    });
+    const { history } = this.props;
+    history.push('/login');
   }
 
   //route to view accounts list and API call to Synapse get all nodes
-  viewAccts() {
+  viewAccts = () => {
     const { history } = this.props;
     history.push('/viewaccounts');
   }
-  content() {
+  content = () => {
     const profileDetails = (
       <UserProfile
         name={this.props.user.client.name}
@@ -55,9 +50,6 @@ class UserDetails extends Component {
     );
   }
   render() {
-    if (this.state.redirect) {
-      return <Redirect strict to='/login' />;
-    }
     return <div>{this.state.loaded ? this.content() : null}</div>;
   }
 }

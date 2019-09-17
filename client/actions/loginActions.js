@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 import { withRouter } from 'react-router';
 
-export function login(email, password) {
+export const login = (email, password) => {
   return dispatch => {
     dispatch(setLoginPending(true));
     dispatch(setLoginSuccess(false));
@@ -18,28 +18,28 @@ export function login(email, password) {
   };
 }
 
-function setLoginPending(value) {
+const setLoginPending = (value) => {
   return {
     type: types.SET_LOGIN_PENDING,
     payload: value
   };
 }
 
-export function setLoginSuccess(value) {
+export const setLoginSuccess = (value) => {
   return {
     type: types.SET_LOGIN_SUCCESS,
     payload: value
   };
 }
 
-function setLoginError(value) {
+const setLoginError = (value) => {
   return {
     type: types.SET_LOGIN_ERROR,
     payload: value
   };
 }
 
-function callLoginApi(email, password, callback) {
+const callLoginApi = (email, password, callback) => {
   setTimeout(() => {
     if (email === "admin@example.com" && password === "admin") {
       return callback(null);

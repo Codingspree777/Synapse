@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Redirect } from 'react-router-dom';
 import * as actions from '../actions/index';
 import Accounts from '../components/accounts';
 
@@ -9,36 +8,31 @@ class ViewDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false,
-      redirect: false
+      loaded: false
     };
-    this.content = this.content.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.props.viewAccounts();
     setTimeout(() => {
       this.setState({ loaded: true });
     }, 1000);
   }
 
-  logout() {
+  logout = () => {
     this.props.login(', ');
-    this.setState({
-      redirect: true
-    });
+    const { history } = this.props;
+    history.push('/login');
   }
 
-  handleClick(e) {
+  handleClick = e => {
     e.preventDefault();
     this.props.viewTransactions(e.target.value);
     const { history } = this.props;
     history.push('/transactions');
   }
 
-  content() {
+  content = () => {
     const accountsList = [];
     for (let i = 0; i < this.props.view.nodes.length; i++) {
       let el = this.props.view.nodes[i];
@@ -73,9 +67,6 @@ class ViewDetails extends Component {
   }
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect strict to='/login' />;
-    }
     return <div>{this.state.loaded ? this.content() : null}</div>;
   }
 }
