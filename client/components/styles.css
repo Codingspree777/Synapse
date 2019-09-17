@@ -81,8 +81,24 @@ ul {
 .profile_pic {
     margin-left: 3%
 }
+.profile_name {
+    margin-left: 3%
+}
 
 .welcome {
     padding-top: 25px;
     color: #1e6b5e;
+}
+
+.list{
+    font-size: 18px;
+    padding: 5px;
+    color: rgb(93, 91, 91);
+}
+
+.viewContainer {
+height: 100%; 
+  width: 100%;
+  text-align: center;
+  position: relative;
 }

@@ -59,9 +59,13 @@ class ViewDetails extends Component {
     }
 
     return (
-      <div>
+      <div className='viewContainer'>
+        <div className='profile_pic'>
         <img src='https://imgur.com/Lr5IybM.png'></img>
+        </div>
+        <div className='profile_name'>
         {this.props.user.client.name}
+        </div>
         {accountsList}
       </div>
     );
