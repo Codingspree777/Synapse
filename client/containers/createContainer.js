@@ -3,26 +3,25 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
 import Header2 from '../components/header2';
-import Accounts from '../components/accounts';
+import CreateTransaction from '../components/createTransaction';
 import { Button } from 'reactstrap';
 
-class ViewDetails extends Component {
+class CreateForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false
-    };
+        to: {type: 'test', id: 'test1'},
+        amount: {amount: 0, currency:'USD'}
+    }
   }
 
   componentDidMount = () => {
-    this.props.viewAccounts();
-    setTimeout(() => {
-      this.setState({ loaded: true });
-    }, 1500);
+    
   };
+
   goback = () => {
     const { history } = this.props;
-    history.push('/user');
+    history.push('/viewaccounts');
   };
 
   logout = () => {
@@ -37,57 +36,17 @@ class ViewDetails extends Component {
     const { history } = this.props;
     history.push('/transactions');
   };
+  // test = () => {
+  //   let newProperty= {...this.state.to}
+  //   this.setState({newProperty:'test'})
+  // }
 
-  handleClick2 = e => {
-    e.preventDefault();
-    this.props.getNode(e.target.value);
-    const { history } = this.props;
-    history.push('/createtransaction');
-  };
-
-  content = () => {
-    const accountsList = [];
-    for (let i = 0; i < this.props.view.nodes.length; i++) {
-      let el = this.props.view.nodes[i];
-      accountsList.push(
-        <Accounts
-          id={el._id}
-          value={el._id}
-          type={el.type}
-          name={el.info.nickname}
-          status={el.allowed}
-          balance={el.info.balance.amount}
-          curr={el.info.balance.currency}
-        />
-      );
-      accountsList.push(
-        <Button
-          color='primary'
-          size='sm'
-          className='viewTransaction'
-          id={el._id}
-          value={el._id}
-          onClick={this.handleClick}
-        >
-          View Transactions
-        </Button>
-      );
-      accountsList.push(
-        <Button
-          color='primary'
-          size='sm'
-          className='viewTransaction'
-          id={el._id}
-          value={el._id}
-          onClick={this.handleClick2}
-        >
-          Create Transaction
-        </Button>
-      );
-    }
-
-    return <div className='viewContainer'>{accountsList}</div>;
-  };
+  submit = () => {
+    const obj = this.state.to;
+    const obj2 = this.state.amount;
+    const copyObj = Object.assign(obj, obj2)
+    this.props.submitTransaction(this.props.str, copyObj)
+  }
 
   render() {
     return (
@@ -107,7 +66,14 @@ class ViewDetails extends Component {
             goback
           </Button>
         </span>
-        {this.state.loaded ? this.content() : null}
+        <CreateTransaction></CreateTransaction>
+        <Button
+            color='primary'
+            className='goback_button'
+            onClick={this.submit}
+          >
+            Submit
+          </Button>
       </div>
     );
   }
@@ -117,7 +83,7 @@ const mapStateToProps = store => {
   return {
     user: store.user.user,
     view: store.view.view,
-    str: store.str.str
+    str: store.str.str,
   };
 };
 
@@ -126,7 +92,7 @@ const mapDispatchToProps = dispatch => {
     login: (email, password) => dispatch(actions.login(email, password)),
     viewAccounts: () => dispatch(actions.viewAccounts()),
     viewTransactions: val => dispatch(actions.viewTransactions(val)),
-    getNode: val => dispatch(actions.getNode(val))
+    submitTransaction:(val1, val2) => dispatch(actions.submitTransaction(val1, val2))
   };
 };
 
@@ -134,5 +100,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ViewDetails)
+  )(CreateForm)
 );

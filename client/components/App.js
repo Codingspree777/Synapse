@@ -9,6 +9,7 @@ import LoginPage from '../containers/loginContainer';
 import UserDetails from '../containers/userContainer';
 import ViewDetails from '../containers/viewContainer';
 import TransDetails from '../containers/transContainer';
+import CreateForm from '../containers/createContainer';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -22,6 +23,7 @@ const App = () => {
           <Route exact path='/user' component={UserDetails} />
           <Route exact path='/viewaccounts' component={ViewDetails} />
           <Route exact path='/transactions' component={TransDetails} />
+          <Route exact path='/createtransaction' component={CreateForm} />
         </Switch>
       </div>
     </Router>

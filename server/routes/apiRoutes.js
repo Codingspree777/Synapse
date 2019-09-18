@@ -1,21 +1,21 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const axios = require("axios");
-const apiConfig = require("../../apiKeys");
+const axios = require('axios');
+const apiConfig = require('../../apiKeys');
 
-let oauth = "";
+let oauth = '';
 
 //initial call to Synapse API to get user details and refresh token, then second call to API to get oauth
-router.get("/user", (req, res) => {
+router.get('/user', (req, res) => {
   const getApi = async () => {
     const headers = {
-      "X-SP-GATEWAY": apiConfig.clientKey,
-      "X-SP-USER-IP": apiConfig.IPkey,
-      "X-SP-USER": oauth.concat(apiConfig.fingerprintKey)
+      'X-SP-GATEWAY': apiConfig.clientKey,
+      'X-SP-USER-IP': apiConfig.IPkey,
+      'X-SP-USER': oauth.concat(apiConfig.fingerprintKey)
     };
     try {
       return await axios.get(
-        "https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b",
+        'https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b',
         { headers }
       );
     } catch (error) {
@@ -30,13 +30,13 @@ router.get("/user", (req, res) => {
   };
   const getoAuth = str => {
     const headers = {
-      "X-SP-GATEWAY": apiConfig.clientKey,
-      "X-SP-USER-IP": apiConfig.IPkey,
-      "X-SP-USER": oauth.concat(apiConfig.fingerprintKey)
+      'X-SP-GATEWAY': apiConfig.clientKey,
+      'X-SP-USER-IP': apiConfig.IPkey,
+      'X-SP-USER': oauth.concat(apiConfig.fingerprintKey)
     };
     axios
       .post(
-        "https://uat-api.synapsefi.com/v3.1/oauth/5d7be9bf7ac0170072e22b4b",
+        'https://uat-api.synapsefi.com/v3.1/oauth/5d7be9bf7ac0170072e22b4b',
         { refresh_token: str },
         { headers }
       )
@@ -51,16 +51,16 @@ router.get("/user", (req, res) => {
 });
 
 //API call to get User's accounts
-router.get("/view", (req, res) => {
+router.get('/view', (req, res) => {
   const getApi = async () => {
     const headers = {
-      "X-SP-GATEWAY": apiConfig.clientKey,
-      "X-SP-USER-IP": apiConfig.IPkey,
-      "X-SP-USER": oauth.concat(apiConfig.fingerprintKey)
+      'X-SP-GATEWAY': apiConfig.clientKey,
+      'X-SP-USER-IP': apiConfig.IPkey,
+      'X-SP-USER': oauth.concat(apiConfig.fingerprintKey)
     };
     try {
       return await axios.get(
-        "https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b/nodes",
+        'https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b/nodes',
         { headers }
       );
     } catch (error) {
@@ -76,12 +76,12 @@ router.get("/view", (req, res) => {
 });
 
 //API call GET to view Node transaction accounts, local router is post in order to pass in the node ID
-router.post("/transactions", (req, res) => {
+router.post('/transactions', (req, res) => {
   const getApi = async () => {
     const headers = {
-      "X-SP-GATEWAY": apiConfig.clientKey,
-      "X-SP-USER-IP": apiConfig.IPkey,
-      "X-SP-USER": oauth.concat(apiConfig.fingerprintKey)
+      'X-SP-GATEWAY': apiConfig.clientKey,
+      'X-SP-USER-IP': apiConfig.IPkey,
+      'X-SP-USER': oauth.concat(apiConfig.fingerprintKey)
     };
     try {
       return await axios.get(
@@ -98,6 +98,36 @@ router.post("/transactions", (req, res) => {
     res.send(results.data);
   };
   seeResults();
+});
+
+router.post('/submit', (req, res) => {
+  const post = {
+    to: {
+      type: req.body.info.type,
+      id: req.body.info.id
+    },
+    amount: {
+      amount: req.body.info.amount,
+      currency: req.body.info.currency
+    }
+  };
+  const headers = {
+    'X-SP-GATEWAY': apiConfig.clientKey,
+    'X-SP-USER-IP': apiConfig.IPkey,
+    'X-SP-USER': oauth.concat(apiConfig.fingerprintKey)
+  };
+  axios
+    .post(
+      `https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b/nodes/${req.body.str}/trans`,
+      { post },
+      { headers }
+    )
+    .then(function(response) {
+      console.log(response.data);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
 });
 
 module.exports = router;
