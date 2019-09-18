@@ -5,22 +5,20 @@ const CreateTransaction = props => {
   
   return (
     <div>
-      <h1>create</h1>
+      <h1>Fill in requried fields</h1>
       <div>
       <InputGroup>
-        <InputGroupAddon addonType="prepend">To:</InputGroupAddon>
+        <InputGroupAddon addonType="prepend" to={props.to}>To:</InputGroupAddon>
         <Input placeholder="User ID" />
-      </InputGroup>
-      <InputGroup>
-        <Input placeholder="username" />
-        <InputGroupAddon addonType="append">
-          <InputGroupText>@example.com</InputGroupText>
-        </InputGroupAddon>
+        <InputGroupAddon addonType="prepend" type={props.type}>Type of Account?:</InputGroupAddon>
+        <Input placeholder="DEPOSIT-US" />
       </InputGroup>
       <InputGroup>
         <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-        <Input placeholder="Amount" min={0} max={100} type="number" step="1" />
+        <Input placeholder="Amount (min $5)" min={5} max={1000000} type="number" step="1" amount={props.amount}/>
         <InputGroupAddon addonType="append">.00</InputGroupAddon>
+        <InputGroupAddon addonType="prepend" curr={props.curr}>Curr?:</InputGroupAddon>
+        <Input placeholder="USD" />
       </InputGroup>
     </div>
     </div>
