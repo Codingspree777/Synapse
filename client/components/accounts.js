@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 
 const Accounts = props => {
   let style;
-if (props.status === 'CREDIT-AND-DEBIT') {
-  style = {
-    color: 'green'
+  if (props.status === 'CREDIT-AND-DEBIT') {
+    style = {
+      color: 'green'
+    };
+  } else {
+    style = {
+      color: 'red'
+    };
   }
-} else {
-  style = {
-    color: 'red'
-  }
-}
   return (
     <div className='accounts'>
       <ul>

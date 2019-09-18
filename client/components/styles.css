@@ -1,25 +1,25 @@
 body {
-    background: linear-gradient(white, transparent),
-    linear-gradient(to top left,#4fa49a, transparent),
+  background: linear-gradient(white, transparent),
+    linear-gradient(to top left, #4fa49a, transparent),
     linear-gradient(to top right, #9dc66b, transparent);
-    background-blend-mode: screen;
+  background-blend-mode: screen;
 }
 .header {
-    color: #4686a0;
+  color: #4686a0;
 }
 
 .quote {
-    margin-top: -1%;
-    font-style: italic;
+  margin-top: -1%;
+  font-style: italic;
 }
 
 #gif {
-    width: 250px;
-    height: 115px;
+  width: 250px;
+  height: 115px;
 }
 
 .background {
-  height: 100%; 
+  height: 100%;
   width: 100%;
   position: relative;
 }
@@ -34,6 +34,7 @@ form[name='loginForm'] {
 .form-group {
   display: flex;
   flex-direction: row;
+  margin-top: 5%;
   margin-bottom: 10px;
 }
 
@@ -72,33 +73,63 @@ ul {
   list-style-type: none;
 }
 .profile {
-  height: 100%; 
+  height: 100%;
   width: 100%;
   text-align: center;
   position: relative;
 }
 
 .profile_pic {
-    margin-left: 3%
+  margin-left: 3%;
 }
 .profile_name {
-    margin-left: 3%
+  margin-left: 3%;
+  margin-top: 1%;
+  color: #1e6b5e;
+  font-weight: 800;
 }
 
 .welcome {
-    padding-top: 25px;
-    color: #1e6b5e;
+  padding-top: 25px;
+  color: #1e6b5e;
 }
 
-.list{
-    font-size: 18px;
-    padding: 5px;
-    color: rgb(93, 91, 91);
+.list {
+  font-size: 18px;
+  padding: 5px;
+  color: rgb(93, 91, 91);
 }
 
 .viewContainer {
-height: 100%; 
+  height: 100%;
   width: 100%;
   text-align: center;
   position: relative;
+}
+
+.transContainer {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  font-family: -apple-system;
+  font-size: 90%;
+  color: #333;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  width: 80%;
+  text-align: center;
+}
+
+td,
+th {
+  white-space: nowrap;
+  border: 1px solid #ddd;
+  padding: 20px;
+  color: rgb(93, 91, 91);
 }

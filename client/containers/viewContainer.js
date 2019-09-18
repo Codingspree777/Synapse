@@ -61,11 +61,9 @@ class ViewDetails extends Component {
     return (
       <div className='viewContainer'>
         <div className='profile_pic'>
-        <img src='https://imgur.com/Lr5IybM.png'></img>
+          <img src='https://imgur.com/Lr5IybM.png'></img>
         </div>
-        <div className='profile_name'>
-        {this.props.user.client.name}
-        </div>
+        <div className='profile_name'>{this.props.user.client.name}</div>
         {accountsList}
       </div>
     );
@@ -74,15 +72,15 @@ class ViewDetails extends Component {
   render() {
     return (
       <div>
-          <span>
-        <button id={'logput'} onClick={this.logout}>
-          logout
-        </button>
+        <span>
+          <button id={'logput'} onClick={this.logout}>
+            logout
+          </button>
         </span>
         <span>
-        <button id={'goback'} onClick={this.goback}>
-          goback
-        </button>
+          <button id={'goback'} onClick={this.goback}>
+            goback
+          </button>
         </span>
         {this.state.loaded ? this.content() : null}
       </div>

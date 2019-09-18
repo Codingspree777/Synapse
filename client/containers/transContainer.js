@@ -31,14 +31,14 @@ class TransDetails extends Component {
   };
 
   content = () => {
-    const convertDate = (obj) => {
+    const convertDate = obj => {
       const a = new Date(obj);
       const b = a.toLocaleTimeString('en-US');
-      const c = b.slice(9,12);
-      const d = a.toString().slice(4,21);
+      const c = b.slice(9, 12);
+      const d = a.toString().slice(4, 21);
       return d + ' ' + c;
-    }
-    
+    };
+
     const transColumns = this.props.transactions.trans.map(el => (
       <Transactions
         id={el._id}
@@ -50,15 +50,13 @@ class TransDetails extends Component {
         date={convertDate(el.timeline[3].date)}
       />
     ));
-  
+
     return (
-      <div className='viewContainer'>
+      <div className='transContainer'>
         <div className='profile_pic'>
-        <img src='https://imgur.com/Lr5IybM.png'></img>
+          <img src='https://imgur.com/Lr5IybM.png'></img>
         </div>
-        <div className='profile_name'>
-        {this.props.user.client.name}
-        </div>
+        <div className='profile_name'>{this.props.user.client.name}</div>
         {transColumns}
       </div>
     );
@@ -68,14 +66,14 @@ class TransDetails extends Component {
     return (
       <div>
         <span>
-        <button id={'logput'} onClick={this.logout}>
-          logout
-        </button>
+          <button id={'logput'} onClick={this.logout}>
+            logout
+          </button>
         </span>
         <span>
-        <button id={'goback'} onClick={this.goback}>
-          goback
-        </button>
+          <button id={'goback'} onClick={this.goback}>
+            goback
+          </button>
         </span>
         {this.state.loaded ? this.content() : null}
       </div>
