@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
 import Transactions from '../components/transactions';
+import { Button } from 'reactstrap';
 
 class TransDetails extends Component {
   constructor(props) {
@@ -66,14 +67,14 @@ class TransDetails extends Component {
     return (
       <div>
         <span>
-          <button id={'logput'} onClick={this.logout}>
+        <Button color='danger' className='button' onClick={this.logout}>
             logout
-          </button>
+          </Button>
         </span>
         <span>
-          <button id={'goback'} onClick={this.goback}>
+        <Button color='primary' className='goback_button' onClick={this.goback}>
             goback
-          </button>
+          </Button>
         </span>
         {this.state.loaded ? this.content() : null}
       </div>
