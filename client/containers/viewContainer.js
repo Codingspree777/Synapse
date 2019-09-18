@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
+import Header2 from '../components/header2';
 import Accounts from '../components/accounts';
 import { Button } from 'reactstrap';
 
@@ -17,7 +18,7 @@ class ViewDetails extends Component {
     this.props.viewAccounts();
     setTimeout(() => {
       this.setState({ loaded: true });
-    }, 1000);
+    }, 1200);
   };
   goback = () => {
     const { history } = this.props;
@@ -53,33 +54,37 @@ class ViewDetails extends Component {
         />
       );
       accountsList.push(
-        <Button color='primary' size='sm' className='viewTransaction' id={el._id} value={el._id} onClick={this.handleClick}>
+        <Button
+          color='primary'
+          size='sm'
+          className='viewTransaction'
+          id={el._id}
+          value={el._id}
+          onClick={this.handleClick}
+        >
           View Transactions
         </Button>
       );
     }
 
-    return (
-      <div className='viewContainer'>
-        <div className='profile_pic'>
-          <img src='https://imgur.com/Lr5IybM.png'></img>
-        </div>
-        <div className='profile_name'>{this.props.user.client.name}</div>
-        {accountsList}
-      </div>
-    );
+    return <div className='viewContainer'>{accountsList}</div>;
   };
 
   render() {
     return (
       <div>
+        <Header2 name={this.props.user.client.name} />
         <span>
-        <Button color='danger' className='button' onClick={this.logout}>
+          <Button color='danger' className='button' onClick={this.logout}>
             logout
           </Button>
         </span>
         <span>
-          <Button color='primary' className='goback_button' onClick={this.goback}>
+          <Button
+            color='primary'
+            className='goback_button'
+            onClick={this.goback}
+          >
             goback
           </Button>
         </span>

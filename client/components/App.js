@@ -5,7 +5,6 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import Header from './header';
 import LoginPage from '../containers/loginContainer';
 import UserDetails from '../containers/userContainer';
 import ViewDetails from '../containers/viewContainer';
@@ -17,7 +16,6 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Header />
         <Switch>
           <Redirect exact from='/' to='/login' />
           <Route exact path='/login' component={LoginPage} />

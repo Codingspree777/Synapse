@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
+import Header2 from '../components/header2';
 import UserProfile from '../components/userProfile';
 import { Button } from 'reactstrap';
 
@@ -43,15 +44,16 @@ class UserDetails extends Component {
     );
     return (
       <div>
+        <Header2 name={this.props.user.client.name} />
         <span>
           <Button color='danger' className='button' onClick={this.logout}>
             logout
           </Button>
         </span>
         <span>
-        <Button color='primary' className='button' onClick={this.viewAccts}>
-        View Accounts
-        </Button>
+          <Button color='primary' className='button' onClick={this.viewAccts}>
+            View Accounts
+          </Button>
         </span>
         {profileDetails}
       </div>

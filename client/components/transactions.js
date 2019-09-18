@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'react-grid-system';
 
 const Transactions = props => {
   let style;
@@ -12,31 +13,17 @@ const Transactions = props => {
     };
   }
   return (
-    <div className='tableWrapper'>
-      <table className='table'>
-        <thead>
-          <tr>
-            <th className='th'>TRANSACTION_ID</th>
-            <th className='th'>FROM</th>
-            <th className='th'>TO</th>
-            <th className='th'>AMOUNT</th>
-            <th className='th'>STATUS</th>
-            <th className='th'>DATE</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className='td'>{props.id}</td>
-            <td className='td'>{props.from}</td>
-            <td className='td'>{props.to}</td>
-            <td className='td'>
-              {props.amount} {props.curr}
-            </td>
-            <td className='td' style={style}>{props.status}</td>
-            <td className='td'>{props.date}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div>
+      <Container fluid style={{ lineHeight: '40px' }}>
+        <Row className='rowContent'>
+          <Col  debug>{props.id}</Col>
+          <Col  debug>{props.from}</Col>
+          <Col  debug>{props.to}</Col>
+          <Col  debug>{props.amount} {props.curr}</Col>
+          <Col  style={style} debug>{props.status}</Col>
+          <Col  debug>{props.date}</Col>
+        </Row>
+      </Container>
     </div>
   );
 };

@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
 import Transactions from '../components/transactions';
+import Header2 from '../components/header2';
 import { Button } from 'reactstrap';
+import { Container, Row, Col } from 'react-grid-system';
 
 class TransDetails extends Component {
   constructor(props) {
@@ -54,10 +56,17 @@ class TransDetails extends Component {
 
     return (
       <div className='transContainer'>
-        <div className='profile_pic'>
-          <img src='https://imgur.com/Lr5IybM.png'></img>
-        </div>
-        <div className='profile_name'>{this.props.user.client.name}</div>
+        <h3>Transactions Details</h3>
+        <Container fluid style={{ lineHeight: '40px' }}>
+          <Row className='rowHeader'>
+            <Col debug>TRANSACTION_ID</Col>
+            <Col debug>FROM</Col>
+            <Col debug>TO</Col>
+            <Col debug>AMOUNT</Col>
+            <Col debug>STATUS</Col>
+            <Col debug>DATE</Col>
+          </Row>
+        </Container>
         {transColumns}
       </div>
     );
@@ -66,13 +75,18 @@ class TransDetails extends Component {
   render() {
     return (
       <div>
+        <Header2 name={this.props.user.client.name} />
         <span>
-        <Button color='danger' className='button' onClick={this.logout}>
+          <Button color='danger' className='button' onClick={this.logout}>
             logout
           </Button>
         </span>
         <span>
-        <Button color='primary' className='goback_button' onClick={this.goback}>
+          <Button
+            color='primary'
+            className='goback_button'
+            onClick={this.goback}
+          >
             goback
           </Button>
         </span>

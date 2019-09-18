@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import Header from '../components/header';
 import * as actions from '../actions/index';
 
 class LoginPage extends Component {
@@ -35,6 +36,7 @@ class LoginPage extends Component {
     }
     return (
       <div className='background'>
+      <Header></Header>
       <form name='loginForm'>
         <div className='form-group-collection'>
           <div className='form-group'>
