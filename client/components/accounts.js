@@ -17,7 +17,7 @@ const Accounts = props => {
         <li className='list' id={props.id}>
           Your '{props.name}' has a balance of {props.balance} {props.curr}
         </li>
-        <li className='list' id={props.id} style={style}>
+        <li className='list2' id={props.id} style={style}>
           Acc. Type: {props.type} Status: {props.status}{' '}
         </li>
       </ul>

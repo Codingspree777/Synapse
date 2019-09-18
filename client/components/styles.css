@@ -1,11 +1,13 @@
 body {
   background: linear-gradient(white, transparent),
     linear-gradient(to top left, #4fa49a, transparent),
-    linear-gradient(to top right, #9dc66b, transparent);
+    linear-gradient(to top right, #9dc66b, transparent) !important;
   background-blend-mode: screen;
 }
 .header {
   color: #4686a0;
+  margin-top: 2%;
+  margin-left: 3%;
 }
 
 .quote {
@@ -14,8 +16,8 @@ body {
 }
 
 #gif {
-  width: 250px;
-  height: 115px;
+  width: 260px;
+  height: 120px;
 }
 
 .background {
@@ -23,12 +25,19 @@ body {
   width: 100%;
   position: relative;
 }
-
+.button{
+  margin: 1%;
+  margin-left: 3%;
+}
+.goback_button{
+  margin-left: 5%;
+}
 form[name='loginForm'] {
   display: flex;
   flex-direction: column;
   width: 300px;
   padding: 10px;
+  margin-left: 2%;
 }
 
 .form-group {
@@ -72,6 +81,7 @@ input[type='submit'] {
 ul {
   list-style-type: none;
 }
+
 .profile {
   height: 100%;
   width: 100%;
@@ -80,11 +90,13 @@ ul {
 }
 
 .profile_pic {
-  margin-left: 3%;
+  margin-left: 3.5%;
+  margin-bottom: 1%;
 }
 .profile_name {
-  margin-left: 3%;
+  margin-left: 3.5%;
   margin-top: 1%;
+  margin-bottom: 2%;
   color: #1e6b5e;
   font-weight: 800;
 }
@@ -92,6 +104,7 @@ ul {
 .welcome {
   padding-top: 25px;
   color: #1e6b5e;
+  margin-bottom: 2%;
 }
 
 .list {
@@ -100,11 +113,24 @@ ul {
   color: rgb(93, 91, 91);
 }
 
+.list2 {
+  font-size: 18px;
+  padding: 5px;
+  color: rgb(93, 91, 91);
+  margin-top: -1%;
+}
+
 .viewContainer {
   height: 100%;
   width: 100%;
-  text-align: center;
-  position: relative;
+  margin-top: 2%;
+  /* margin-left: 1%; */
+}
+
+.viewTransaction {
+  margin-top: -1%;
+  margin-left: 3%;
+  margin-bottom: 1.5%;
 }
 
 .transContainer {

@@ -11,6 +11,7 @@ import UserDetails from '../containers/userContainer';
 import ViewDetails from '../containers/viewContainer';
 import TransDetails from '../containers/transContainer';
 import './styles.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const App = () => {
   return (

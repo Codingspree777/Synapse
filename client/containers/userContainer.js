@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
 import UserProfile from '../components/userProfile';
+import { Button } from 'reactstrap';
 
 class UserDetails extends Component {
   constructor(props) {
@@ -43,12 +44,14 @@ class UserDetails extends Component {
     return (
       <div>
         <span>
-          <button id={'logput'} onClick={this.logout}>
+          <Button color='danger' className='button' onClick={this.logout}>
             logout
-          </button>
+          </Button>
         </span>
         <span>
-          <button onClick={this.viewAccts}>View Accounts</button>
+        <Button color='primary' className='button' onClick={this.viewAccts}>
+        View Accounts
+        </Button>
         </span>
         {profileDetails}
       </div>

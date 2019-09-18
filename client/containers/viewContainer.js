@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
 import Accounts from '../components/accounts';
+import { Button } from 'reactstrap';
 
 class ViewDetails extends Component {
   constructor(props) {
@@ -52,9 +53,9 @@ class ViewDetails extends Component {
         />
       );
       accountsList.push(
-        <button id={el._id} value={el._id} onClick={this.handleClick}>
+        <Button color='primary' size='sm' className='viewTransaction' id={el._id} value={el._id} onClick={this.handleClick}>
           View Transactions
-        </button>
+        </Button>
       );
     }
 
@@ -73,14 +74,14 @@ class ViewDetails extends Component {
     return (
       <div>
         <span>
-          <button id={'logput'} onClick={this.logout}>
+        <Button color='danger' className='button' onClick={this.logout}>
             logout
-          </button>
+          </Button>
         </span>
         <span>
-          <button id={'goback'} onClick={this.goback}>
+          <Button color='primary' className='goback_button' onClick={this.goback}>
             goback
-          </button>
+          </Button>
         </span>
         {this.state.loaded ? this.content() : null}
       </div>
