@@ -117,7 +117,7 @@ ul {
   color: #333;
 }
 
-table {
+.table {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid #ddd;
@@ -126,8 +126,8 @@ table {
   text-align: center;
 } 
 
-td,
-th {
+.td,
+.th {
   white-space: nowrap;
   border: 1px solid #ddd;
   padding: 20px;
