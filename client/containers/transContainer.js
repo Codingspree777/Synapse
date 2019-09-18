@@ -46,8 +46,8 @@ class TransDetails extends Component {
         to={el.to.user.legal_names[0]}
         amount={el.amount.amount}
         curr={el.amount.currency}
-        status={el.timeline[3].status}
-        date={convertDate(el.timeline[3].date)}
+        status={el.recent_status.status}
+        date={convertDate(el.recent_status.date)}
       />
     ));
 
