@@ -3,7 +3,9 @@ import * as types from '../constants/actionTypes';
 const initialState = {
   user: [],
   view:[],
-  transactions: []
+  transactions: [],
+  str: '',
+  obj: {}
 };
 
 export default function userReducer(state = initialState, action) {
@@ -22,6 +24,17 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         transactions: action.payload
+      };
+      case types.GET_NODE_ID:
+      return {
+        ...state,
+        str: action.payload
+      };
+      case types.SUBMIT_TRANS:
+      return {
+        ...state,
+        str: action.payload,
+        obj: action.payload
       };
     default:
       return state;

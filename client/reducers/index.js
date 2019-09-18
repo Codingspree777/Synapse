@@ -7,7 +7,9 @@ const reducers = combineReducers({
   user: userReducer,
   login: loginReducer,
   view: userReducer,
-  transactions: userReducer
+  transactions: userReducer,
+  str:userReducer,
+  obj:userReducer
 });
 
 export default reducers;

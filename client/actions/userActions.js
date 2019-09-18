@@ -51,3 +51,27 @@ export const viewTransactions = str => {
       });
   };
 };
+
+//Need to have NodeID in store to post transaction
+export const getNode = str => {
+  return {
+          type: types.GET_NODE_ID,
+          payload: str
+        } 
+};
+
+export const submitTransaction = (str, obj) => {
+  return dispatch => {
+    axios
+      .post('/api/submit',  { string:str, info:obj })
+      .catch(err => {
+        console.log(err);
+      })
+      .then(response => {
+        dispatch({
+          type: types.SUBMIT_TRANS,
+          payload: response.data
+        });
+      });
+  };
+};
