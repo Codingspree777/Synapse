@@ -17,7 +17,7 @@ class ViewDetails extends Component {
     this.props.viewAccounts();
     setTimeout(() => {
       this.setState({ loaded: true });
-    }, 1200);
+    }, 1000);
   };
   goback = () => {
     const { history } = this.props;
