@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
   return (
     <div className='header'>
-      <div class='left-flex'>
+      <div className='left-flex'>
         <h1 className='h1'> Simple Banking </h1>
         <p className='quote'>"Banking made simple"</p>
       </div>
