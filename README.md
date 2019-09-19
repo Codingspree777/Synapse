@@ -1,4 +1,4 @@
-# Synapse
+# Synapse - Simple Banking
 Welcome to Simple Banking.  This a full-stack demo APP with node.js on the backend. 
 
 1) Fork this github
@@ -11,6 +11,9 @@ Welcome to Simple Banking.  This a full-stack demo APP with node.js on the backe
     Email: admin@example.com
     
     Password: admin
+
+
+demo video:  https://youtu.be/HCFs9sp9BC0
 
 
 
