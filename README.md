@@ -9,11 +9,9 @@ Welcome to Simple Banking.  This a full-stack demo APP with node.js on the backe
 6) Currently the feature to create new user is not available. Please login with the creditials below.
 
     Email: admin@example.com
+    
     Password: admin
 
-
-demo video:
-https://youtu.be/6ZCK7jXo68Y
 
 
 Author's note -
