@@ -27,9 +27,10 @@ class TransDetails extends Component {
     const convertDate = obj => {
       const a = new Date(obj);
       const b = a.toLocaleTimeString('en-US');
-      const c = b.slice(9, 12);
-      const d = a.toString().slice(4, 21);
-      return d + ' ' + c;
+      const c = b.slice(0, 5);
+      const d = b.slice(9, 12);
+      const e = a.toString().slice(4, 15);
+      return `${e} ${c} ${d}`;
     };
 
     const transColumns = this.props.transactions.trans.map(el => (
