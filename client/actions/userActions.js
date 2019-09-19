@@ -61,6 +61,7 @@ export const getNode = str => {
 };
 
 export const submitTransaction = (str, obj) => {
+  console.log(obj)
   return dispatch => {
     axios
       .post('/api/submit',  { string:str, info:obj })

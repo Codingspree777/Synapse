@@ -100,6 +100,7 @@ router.post('/transactions', (req, res) => {
   seeResults();
 });
 
+//API call to create a transaction
 router.post('/submit', (req, res) => {
   const post = {
     to: {
@@ -108,7 +109,7 @@ router.post('/submit', (req, res) => {
     },
     amount: {
       amount: req.body.info.amount,
-      currency: req.body.info.currency
+      currency: req.body.info.curr
     }
   };
   const headers = {
