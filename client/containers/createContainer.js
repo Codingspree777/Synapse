@@ -10,14 +10,10 @@ class CreateForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        to: {type: 'test', id: 'test1'},
-        amount: {amount: 0, currency:'USD'}
-    }
+      to: { id: '', type: '' },
+      amount: { amount: 0, curr: '' }
+    };
   }
-
-  componentDidMount = () => {
-    
-  };
 
   goback = () => {
     const { history } = this.props;
@@ -36,19 +32,64 @@ class CreateForm extends Component {
     const { history } = this.props;
     history.push('/transactions');
   };
-  // test = () => {
-  //   let newProperty= {...this.state.to}
-  //   this.setState({newProperty:'test'})
-  // }
+
+  changeID = e => {
+    e.preventDefault();
+    this.setState({
+      to: {
+        ...this.state.to,
+        id: e.target.value
+      }
+    });
+  };
+
+  changeType = e => {
+    e.preventDefault();
+    this.setState({
+      to: {
+        ...this.state.to,
+        type: e.target.value
+      }
+    });
+  };
+
+  changeAmt = e => {
+    e.preventDefault();
+    this.setState({
+      amount: {
+        ...this.state.amount,
+        amount: e.target.value
+      }
+    });
+  };
+
+  changeCurr = e => {
+    e.preventDefault();
+    this.setState({
+      amount: {
+        ...this.state.amount,
+        curr: e.target.value
+      }
+    });
+  };
 
   submit = () => {
     const obj = this.state.to;
     const obj2 = this.state.amount;
-    const copyObj = Object.assign(obj, obj2)
-    this.props.submitTransaction(this.props.str, copyObj)
-  }
+    const copyObj = Object.assign(obj, obj2);
+    this.props.submitTransaction(this.props.str, copyObj);
+  };
 
   render() {
+    console.log(this.state);
+    const Form = (
+      <CreateTransaction
+        changeID={this.changeID}
+        changeType={this.changeType}
+        changeAmt={this.changeAmt}
+        changeCurr={this.changeCurr}
+      />
+    );
     return (
       <div>
         <Header2 name={this.props.user.client.name} />
@@ -66,14 +107,10 @@ class CreateForm extends Component {
             goback
           </Button>
         </span>
-        <CreateTransaction></CreateTransaction>
-        <Button
-            color='primary'
-            className='goback_button'
-            onClick={this.submit}
-          >
-            Submit
-          </Button>
+        {Form}
+        <Button color='primary' className='goback_button' onClick={this.submit}>
+          Submit
+        </Button>
       </div>
     );
   }
@@ -83,7 +120,7 @@ const mapStateToProps = store => {
   return {
     user: store.user.user,
     view: store.view.view,
-    str: store.str.str,
+    str: store.str.str
   };
 };
 
@@ -92,7 +129,8 @@ const mapDispatchToProps = dispatch => {
     login: (email, password) => dispatch(actions.login(email, password)),
     viewAccounts: () => dispatch(actions.viewAccounts()),
     viewTransactions: val => dispatch(actions.viewTransactions(val)),
-    submitTransaction:(val1, val2) => dispatch(actions.submitTransaction(val1, val2))
+    submitTransaction: (val1, val2) =>
+      dispatch(actions.submitTransaction(val1, val2))
   };
 };
 
