@@ -10,17 +10,7 @@ import { Container, Row, Col } from 'react-grid-system';
 class TransDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loaded: false
-    };
   }
-
-  componentDidMount = () => {
-    //this.props.viewAccounts();
-    setTimeout(() => {
-      this.setState({ loaded: true });
-    }, 1100);
-  };
 
   goback = () => {
     const { history } = this.props;
@@ -90,7 +80,7 @@ class TransDetails extends Component {
             goback
           </Button>
         </span>
-        {this.state.loaded ? this.content() : null}
+        {this.props.transactions.trans ? this.content() : null}
       </div>
     );
   }

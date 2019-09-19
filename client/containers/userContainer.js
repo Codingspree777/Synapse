@@ -9,16 +9,10 @@ import { Button } from 'reactstrap';
 class UserDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loaded: false
-    };
   }
 
   componentDidMount = () => {
     this.props.getUser();
-    setTimeout(() => {
-      this.setState({ loaded: true });
-    }, 1000);
   };
 
   logout = () => {
@@ -60,7 +54,7 @@ class UserDetails extends Component {
     );
   };
   render() {
-    return <div>{this.state.loaded ? this.content() : null}</div>;
+    return <div>{this.props.user.client ? this.content() : null}</div>;
   }
 }
 
