@@ -10,17 +10,7 @@ import { Container, Row, Col } from 'react-grid-system';
 class TransDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loaded: false
-    };
   }
-
-  componentDidMount = () => {
-    //this.props.viewAccounts();
-    setTimeout(() => {
-      this.setState({ loaded: true });
-    }, 1100);
-  };
 
   goback = () => {
     const { history } = this.props;
@@ -37,9 +27,10 @@ class TransDetails extends Component {
     const convertDate = obj => {
       const a = new Date(obj);
       const b = a.toLocaleTimeString('en-US');
-      const c = b.slice(9, 12);
-      const d = a.toString().slice(4, 21);
-      return d + ' ' + c;
+      const c = b.slice(0, 5);
+      const d = b.slice(9, 12);
+      const e = a.toString().slice(4, 15);
+      return `${e} ${c} ${d}`;
     };
 
     const transColumns = this.props.transactions.trans.map(el => (
@@ -90,7 +81,7 @@ class TransDetails extends Component {
             goback
           </Button>
         </span>
-        {this.state.loaded ? this.content() : null}
+        {this.props.transactions.trans ? this.content() : null}
       </div>
     );
   }

@@ -9,17 +9,12 @@ import { Button } from 'reactstrap';
 class ViewDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loaded: false
-    };
   }
 
   componentDidMount = () => {
     this.props.viewAccounts();
-    setTimeout(() => {
-      this.setState({ loaded: true });
-    }, 1500);
   };
+
   goback = () => {
     const { history } = this.props;
     history.push('/user');
@@ -107,7 +102,7 @@ class ViewDetails extends Component {
             goback
           </Button>
         </span>
-        {this.state.loaded ? this.content() : null}
+        {this.props.view.nodes ? this.content() : null}
       </div>
     );
   }
