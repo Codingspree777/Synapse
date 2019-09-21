@@ -10,14 +10,14 @@ import {
 } from '../constants/enConstants';
 import { USER_PAGE } from '../constants/pathConstants';
 
-const CreateButtons = ({ type, path, description, push}) => {
+const CreateButtons = ({ type, description, onClick, value }) => {
   if (type === USER_LOGOUT) {
     type = USER_LOGOUT;
   } else {
     type = USER_NAVIGATE;
   } 
   return (
-    <Button color={type} className='button' onClick={push}>
+    <Button color={type} className='button' onClick={onClick} value={value}>
       {description}
     </Button>
   );

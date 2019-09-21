@@ -65,19 +65,20 @@ class ViewDetails extends Component {
           status={el.allowed}
           balance={el.info.balance.amount}
           curr={el.info.balance.currency}
+          onClick={this.handleClick}
         />
       );
       accountsList.push(
-        <Button
-          color='primary'
-          size='sm'
-          className='viewTransaction'
-          id={el._id}
-          value={el._id}
-          onClick={this.handleClick}
-        >
-          View Transactions
-        </Button>
+        // <Button
+        //   color='primary'
+        //   size='sm'
+        //   className='viewTransaction'
+        //   id={el._id}
+        //   value={el._id}
+        //   onClick={this.handleClick}
+        // >
+        //   View Transactions
+        // </Button>
       );
       accountsList.push(
         <Button
@@ -103,15 +104,14 @@ class ViewDetails extends Component {
         <span>
           <CreateButtons
             type={USER_LOGOUT}
-            push={this.logout}
+            onClick={this.logout}
             description={BUTTON_LOGOUT}
           />
         </span>
         <span>
           <CreateButtons
             type={USER_NAVIGATE}
-            path={USER_PAGE}
-            push={this.goback}
+            onClick={this.goback}
             description={BUTTON_GO_BACK}
           />
         </span>

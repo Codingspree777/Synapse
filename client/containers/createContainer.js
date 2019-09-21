@@ -101,7 +101,7 @@ class CreateForm extends Component {
   render() {
     const Form = (
       <CreateTransaction
-        changeID={this.changeID}
+      toRecipientID={this.toRecipientID}
         changeType={this.changeType}
         changeAmt={this.changeAmt}
         changeCurr={this.changeCurr}
@@ -113,7 +113,7 @@ class CreateForm extends Component {
         <span>
         <CreateButtons
             type={USER_LOGOUT}
-            push={this.logout}
+            onClick={this.logout}
             description={BUTTON_LOGOUT}
           />
         </span>
@@ -121,7 +121,7 @@ class CreateForm extends Component {
         <CreateButtons
             type={USER_NAVIGATE}
             path={USER_PAGE}
-            push={this.goback}
+            onClick={this.goback}
             description={BUTTON_GO_BACK}
           />
         </span>

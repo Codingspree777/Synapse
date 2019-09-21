@@ -9,7 +9,6 @@ import { login } from '../actions/loginActions';
 import { getUser } from '../actions/userActions.js';
 
 import { USER_LOGOUT, USER_NAVIGATE, BUTTON_LOGOUT, BUTTON_VIEW_ACCOUNTS } from '../constants/enConstants';
-import { USER_PAGE } from '../constants/pathConstants';
 
 
 class UserDetails extends Component {
@@ -45,10 +44,10 @@ class UserDetails extends Component {
       <div>
         <Header name={this.props.user.client.name} />
         <span>
-          <CreateButtons type={USER_LOGOUT} push={this.logout} description={BUTTON_LOGOUT}/>
+          <CreateButtons type={USER_LOGOUT} onClick={this.logout} description={BUTTON_LOGOUT}/>
         </span>
         <span>
-          <CreateButtons type={USER_NAVIGATE} path={USER_PAGE} push={this.viewAccts} description={BUTTON_VIEW_ACCOUNTS}/>
+          <CreateButtons type={USER_NAVIGATE}  onClick={this.viewAccts} description={BUTTON_VIEW_ACCOUNTS}/>
         </span>
         {profileDetails}
       </div>

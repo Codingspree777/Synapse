@@ -76,7 +76,7 @@ class TransDetails extends Component {
         <span>
         <CreateButtons
             type={USER_LOGOUT}
-            push={this.logout}
+            onClick={this.logout}
             description={BUTTON_LOGOUT}
           />
         </span>
@@ -84,7 +84,7 @@ class TransDetails extends Component {
         <CreateButtons
             type={USER_NAVIGATE}
             path={USER_PAGE}
-            push={this.goback}
+            onClick={this.goback}
             description={BUTTON_GO_BACK}
           />
         </span>
