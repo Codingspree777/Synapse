@@ -8,35 +8,36 @@ import {
 
 const initialState = {
   user: [],
-  view:[],
+  view: [],
   transactions: [],
+  //rename refractor
   str: '',
   obj: {}
 };
 
-const userReducer = (state = initialState, action) =>{
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
       return {
         ...state,
         user: action.payload
       };
-      case VIEW_ACCT:
+    case VIEW_ACCT:
       return {
         ...state,
         view: action.payload
       };
-      case VIEW_TRANSACTIONS:
+    case VIEW_TRANSACTIONS:
       return {
         ...state,
         transactions: action.payload
       };
-      case GET_NODE_ID:
+    case GET_NODE_ID:
       return {
         ...state,
         str: action.payload
       };
-      case SUBMIT_TRANS:
+    case SUBMIT_TRANS:
       return {
         ...state,
         str: action.payload,
@@ -45,6 +46,6 @@ const userReducer = (state = initialState, action) =>{
     default:
       return state;
   }
-}
+};
 
-export default userReducer
+export default userReducer;

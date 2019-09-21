@@ -40,15 +40,13 @@ class ViewDetails extends Component {
   goToTransactions = e => {
     e.preventDefault();
     this.props.viewTransactions(e.target.value);
-    const { history } = this.props;
-    history.push('/transactions');
+    this.props.history.push('/transactions');
   };
 
   goToCreateTransaction = e => {
     e.preventDefault();
     this.props.getNode(e.target.value);
-    const { history } = this.props;
-    history.push('/createtransaction');
+    this.props.history.push('/createtransaction');
   };
 
   components = () => {

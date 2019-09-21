@@ -4,8 +4,9 @@ import loginReducer from './loginReducer';
 import userReducer from './userReducer';
 
 const reducers = combineReducers({
-  user: userReducer,
   login: loginReducer,
+  //password: loginReducer,
+  user: userReducer,
   view: userReducer,
   str: userReducer,
   obj: userReducer,

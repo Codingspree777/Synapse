@@ -1,6 +1,8 @@
 export const SET_LOGIN_PENDING = 'SET_LOGIN_PENDING';
 export const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
+export const VERIFY_EMAIL = 'VERIFY_EMAIL';
+export const VERIFY_PASSWORD = 'VERIFY_PASSWORD';
 export const GET_USER = 'GET_USER';
 export const VIEW_ACCT = 'VIEW_ACCT';
 export const VIEW_TRANSACTIONS = 'VIEW_TRANSACTION';
