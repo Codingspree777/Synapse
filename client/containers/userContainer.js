@@ -29,7 +29,7 @@ class UserDetails extends Component {
     const { history } = this.props;
     history.push('/viewaccounts');
   };
-  content = () => {
+  components = () => {
     const profileDetails = (
       <UserProfile
         name={this.props.user.client.name}
@@ -57,7 +57,7 @@ class UserDetails extends Component {
     );
   };
   render() {
-    return <div>{this.props.user.client ? this.content() : null}</div>;
+    return <div>{this.props.user.client ? this.components() : null}</div>;
   }
 }
 

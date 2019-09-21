@@ -24,15 +24,14 @@ class TransDetails extends Component {
     history.push('/login');
   };
 
-  content = () => {
-    //TODO: Better varible names
-    const convertDate = obj => {
-      const a = new Date(obj);
-      const b = a.toLocaleTimeString('en-US');
-      const c = b.slice(0, 5);
-      const d = b.slice(9, 12);
-      const e = a.toString().slice(4, 15);
-      return `${e} ${c} ${d}`;
+  components = () => {
+    const convertDate = unixTime => {
+      const timeDate = new Date(unixTime);
+      const time = timeDate.toLocaleTimeString('en-US');
+      const hoursMins = time.slice(0, 5);
+      const amPm = time.slice(9, 12);
+      const date = timeDate.toString().slice(4, 15);
+      return `${date} ${hoursMins} ${amPm}`;
     };
 
     const transColumns = this.props.transactions.trans.map(el => (
@@ -83,7 +82,7 @@ class TransDetails extends Component {
             goback
           </Button>
         </span>
-        {this.props.transactions.trans ? this.content() : null}
+        {this.props.transactions.trans ? this.components() : null}
       </div>
     );
   }
