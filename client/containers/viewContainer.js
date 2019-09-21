@@ -4,8 +4,6 @@ import { withRouter } from 'react-router';
 import Header from '../components/header';
 import Accounts from '../components/accounts';
 import CreateButtons from '../components/buttons';
-import { Button } from 'reactstrap';
-import { USER_PAGE } from '../constants/pathConstants';
 import { login } from '../actions/loginActions';
 import {
   getNode,
@@ -16,7 +14,9 @@ import {
   USER_LOGOUT,
   USER_NAVIGATE,
   BUTTON_LOGOUT,
-  BUTTON_GO_BACK
+  BUTTON_GO_BACK,
+  BUTTON_VIEW_TRANSACTIONS,
+  BUTTON_CREATE_TRANSACTIONS
 } from '../constants/enConstants';
 
 class ViewDetails extends Component {
@@ -37,63 +37,34 @@ class ViewDetails extends Component {
     this.props.history.push('/login');
   };
 
-  handleClick = e => {
+  goToTransactions = e => {
     e.preventDefault();
     this.props.viewTransactions(e.target.value);
     const { history } = this.props;
     history.push('/transactions');
   };
 
-  handleClick2 = e => {
+  goToCreateTransaction = e => {
     e.preventDefault();
     this.props.getNode(e.target.value);
     const { history } = this.props;
     history.push('/createtransaction');
   };
 
-  // TODO: Refactor
   components = () => {
-    const accountsList = [];
-    for (let i = 0; i < this.props.view.nodes.length; i++) {
-      let el = this.props.view.nodes[i];
-      accountsList.push(
-        <Accounts
-          id={el._id}
-          value={el._id}
-          type={el.type}
-          name={el.info.nickname}
-          status={el.allowed}
-          balance={el.info.balance.amount}
-          curr={el.info.balance.currency}
-          onClick={this.handleClick}
-        />
-      );
-      accountsList.push(
-        // <Button
-        //   color='primary'
-        //   size='sm'
-        //   className='viewTransaction'
-        //   id={el._id}
-        //   value={el._id}
-        //   onClick={this.handleClick}
-        // >
-        //   View Transactions
-        // </Button>
-      );
-      accountsList.push(
-        <Button
-          color='primary'
-          size='sm'
-          className='viewTransaction'
-          id={el._id}
-          value={el._id}
-          onClick={this.handleClick2}
-        >
-          Create Transaction
-        </Button>
-      );
-    }
-
+      const accountsList = this.props.view.nodes.map(el => (  <Accounts
+        id={el._id}
+        value={el._id}
+        account_type={el.type}
+        name={el.info.nickname}
+        status={el.allowed}
+        balance={el.info.balance.amount}
+        currency={el.info.balance.currency}
+        onClick={this.goToTransactions}
+        description={BUTTON_VIEW_TRANSACTIONS}
+        onClick2={this.goToCreateTransaction}
+        description2={BUTTON_CREATE_TRANSACTIONS}
+      /> ))
     return <div className='viewContainer'>{accountsList}</div>;
   };
 

@@ -6,3 +6,5 @@ export const USER_NAVIGATE = 'primary';
 export const BUTTON_LOGOUT = 'Logout';
 export const BUTTON_VIEW_ACCOUNTS = 'View Accounts';
 export const BUTTON_GO_BACK = 'Go Back';
+export const BUTTON_VIEW_TRANSACTIONS = 'View Transactions';
+export const BUTTON_CREATE_TRANSACTIONS = 'Create Transactions';
