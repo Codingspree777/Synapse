@@ -4,7 +4,7 @@ import UserDetails from '../containers/userContainer';
 import ViewDetails from '../containers/viewContainer';
 import TransDetails from '../containers/transContainer';
 import CreateForm from '../containers/createContainer';
-import './styles.css';
+import '../styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {

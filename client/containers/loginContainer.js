@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Header from '../components/header';
+import {LOGIN_PAGE} from '../constants/pathConstants'
 
 import {login} from '../actions/loginActions';
 
@@ -37,9 +38,7 @@ class LoginPage extends Component {
     }
     return (
       <div className='background'>
-
-      {/* <Header someProp={path} /> */}
-      <Header/>
+      <Header route={LOGIN_PAGE}/>
       <form name='loginForm'>
         <div className='form-group-collection'>
           <div className='form-group'>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Transactions from '../components/transactions';
-import Header2 from '../components/header2';
+import Header from '../components/header';
 import { Button } from 'reactstrap';
 import { Container, Row, Col } from 'react-grid-system';
 
@@ -68,7 +68,7 @@ class TransDetails extends Component {
   render() {
     return (
       <div>
-        <Header2 name={this.props.user.client.name} />
+        <Header name={this.props.user.client.name} />
         <span>
           <Button color='danger' className='button' onClick={this.logout}>
             logout

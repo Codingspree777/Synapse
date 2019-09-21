@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import Header2 from '../components/header2';
+import Header from '../components/header';
 import UserProfile from '../components/userProfile';
 import { Button } from 'reactstrap';
 
@@ -41,7 +41,7 @@ class UserDetails extends Component {
     );
     return (
       <div>
-        <Header2 name={this.props.user.client.name} />
+        <Header name={this.props.user.client.name} />
         <span>
           <Button color='danger' className='button' onClick={this.logout}>
             logout
