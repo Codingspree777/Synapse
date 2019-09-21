@@ -6,3 +6,4 @@ export const VIEW_ACCT = 'VIEW_ACCT';
 export const VIEW_TRANSACTIONS = 'VIEW_TRANSACTION';
 export const GET_NODE_ID = 'GET_NODE_ID';
 export const SUBMIT_TRANS = 'SUBMIT_TRANS';
+

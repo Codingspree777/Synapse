@@ -75,7 +75,6 @@ export const getNode = str => {
 
 //TODO: RENAME VARIABLES
 export const submitTransaction = (str, obj) => {
-  console.log(obj);
   return dispatch => {
     axios
       .post(CREATE_TRANSACTION_API, { string: str, info: obj })

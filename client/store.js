@@ -3,9 +3,11 @@ import thunk from 'redux-thunk'; // Handling ASYNC
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './reducers/index';
 
+
 const store = createStore(
   reducers,
   composeWithDevTools(applyMiddleware(thunk))
 );
 
 export default store;
+

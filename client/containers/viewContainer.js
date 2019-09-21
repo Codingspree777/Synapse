@@ -3,14 +3,21 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Header from '../components/header';
 import Accounts from '../components/accounts';
+import CreateButtons from '../components/buttons';
 import { Button } from 'reactstrap';
-
-import {login} from '../actions/loginActions';
-import { 
+import { USER_PAGE } from '../constants/pathConstants';
+import { login } from '../actions/loginActions';
+import {
   getNode,
   viewAccounts,
-  viewTransactions,
- } from '../actions/userActions.js'
+  viewTransactions
+} from '../actions/userActions.js';
+import {
+  USER_LOGOUT,
+  USER_NAVIGATE,
+  BUTTON_LOGOUT,
+  BUTTON_GO_BACK
+} from '../constants/enConstants';
 
 class ViewDetails extends Component {
   constructor(props) {
@@ -22,14 +29,12 @@ class ViewDetails extends Component {
   };
 
   goback = () => {
-    const { history } = this.props;
-    history.push('/user');
+    this.props.history.push('/user');
   };
 
   logout = () => {
     this.props.login(', ');
-    const { history } = this.props;
-    history.push('/login');
+    this.props.history.push('/login');
   };
 
   handleClick = e => {
@@ -47,7 +52,7 @@ class ViewDetails extends Component {
   };
 
   // TODO: Refactor
-  content = () => {
+  components = () => {
     const accountsList = [];
     for (let i = 0; i < this.props.view.nodes.length; i++) {
       let el = this.props.view.nodes[i];
@@ -60,7 +65,6 @@ class ViewDetails extends Component {
           status={el.allowed}
           balance={el.info.balance.amount}
           curr={el.info.balance.currency}
-          //handleClick={this.handleClick.bind(this)}
         />
       );
       accountsList.push(
@@ -97,20 +101,21 @@ class ViewDetails extends Component {
       <div>
         <Header name={this.props.user.client.name} />
         <span>
-          <Button color='danger' className='button' onClick={this.logout}>
-            logout
-          </Button>
+          <CreateButtons
+            type={USER_LOGOUT}
+            push={this.logout}
+            description={BUTTON_LOGOUT}
+          />
         </span>
         <span>
-          <Button
-            color='primary'
-            className='goback_button'
-            onClick={this.goback}
-          >
-            goback
-          </Button>
+          <CreateButtons
+            type={USER_NAVIGATE}
+            path={USER_PAGE}
+            push={this.goback}
+            description={BUTTON_GO_BACK}
+          />
         </span>
-        {this.props.view.nodes ? this.content() : null}
+        {this.props.view.nodes ? this.components() : null}
       </div>
     );
   }

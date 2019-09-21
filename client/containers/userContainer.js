@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Header from '../components/header';
 import UserProfile from '../components/userProfile';
-import { Button } from 'reactstrap';
+import CreateButtons from '../components/buttons';
 
-import {login} from '../actions/loginActions';
-import { getUser } from '../actions/userActions.js'
+import { login } from '../actions/loginActions';
+import { getUser } from '../actions/userActions.js';
+
+import { USER_LOGOUT, USER_NAVIGATE, BUTTON_LOGOUT, BUTTON_VIEW_ACCOUNTS } from '../constants/enConstants';
+import { USER_PAGE } from '../constants/pathConstants';
 
 
 class UserDetails extends Component {
@@ -20,15 +23,14 @@ class UserDetails extends Component {
 
   logout = () => {
     this.props.login(', ');
-    const { history } = this.props;
-    history.push('/login');
+    this.props.history.push('/login');
   };
 
   //route to view accounts list and API call to Synapse get all nodes
   viewAccts = () => {
-    const { history } = this.props;
-    history.push('/viewaccounts');
+    this.props.history.push('/viewaccounts');
   };
+
   components = () => {
     const profileDetails = (
       <UserProfile
@@ -43,14 +45,10 @@ class UserDetails extends Component {
       <div>
         <Header name={this.props.user.client.name} />
         <span>
-          <Button color='danger' className='button' onClick={this.logout}>
-            logout
-          </Button>
+          <CreateButtons type={USER_LOGOUT} push={this.logout} description={BUTTON_LOGOUT}/>
         </span>
         <span>
-          <Button color='primary' className='button' onClick={this.viewAccts}>
-            View Accounts
-          </Button>
+          <CreateButtons type={USER_NAVIGATE} path={USER_PAGE} push={this.viewAccts} description={BUTTON_VIEW_ACCOUNTS}/>
         </span>
         {profileDetails}
       </div>
@@ -70,7 +68,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     getUser: () => dispatch(getUser()),
-    login: (email, password) => dispatch(login(email, password))
+    login: (email, password) => dispatch(login(email, password)),
   };
 };
 

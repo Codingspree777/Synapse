@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Header from '../components/header';
+import CreateButtons from '../components/buttons';
 import CreateTransaction from '../components/createTransaction';
 import { Button } from 'reactstrap';
-
+import { USER_PAGE } from '../constants/pathConstants';
+import { login } from '../actions/loginActions';
 import {
   viewAccounts,
   viewTransactions,
-  submitTransaction,
+  submitTransaction
 } from '../actions/userActions';
-
-import { login } from '../actions/loginActions'
+import {
+  USER_LOGOUT,
+  USER_NAVIGATE,
+  BUTTON_LOGOUT,
+  BUTTON_GO_BACK
+} from '../constants/enConstants';
 
 class CreateForm extends Component {
   constructor(props) {
@@ -24,20 +30,18 @@ class CreateForm extends Component {
   }
 
   //TODO: Write a utility function to handle history
-    // const handleHistory = (path) => {
-          //get history
-          //push path into history
-    // }
+  // const handleHistory = (path) => {
+  //get history
+  //push path into history
+  // }
 
   goback = () => {
-    const { history } = this.props;
-    history.push('/viewaccounts');
+    this.props.history.push('/viewaccounts');
   };
 
   logout = () => {
     this.props.login(', ');
-    const { history } = this.props;
-    history.push('/login');
+    this.props.history.push('/login');
   };
 
   handleClick = e => {
@@ -107,18 +111,19 @@ class CreateForm extends Component {
       <div>
         <Header name={this.props.user.client.name} />
         <span>
-          <Button color='danger' className='button' onClick={this.logout}>
-            logout
-          </Button>
+        <CreateButtons
+            type={USER_LOGOUT}
+            push={this.logout}
+            description={BUTTON_LOGOUT}
+          />
         </span>
         <span>
-          <Button
-            color='primary'
-            className='goback_button'
-            onClick={this.goback}
-          >
-            goback
-          </Button>
+        <CreateButtons
+            type={USER_NAVIGATE}
+            path={USER_PAGE}
+            push={this.goback}
+            description={BUTTON_GO_BACK}
+          />
         </span>
         {Form}
         <Button color='primary' className='goback_button' onClick={this.submit}>
@@ -142,8 +147,7 @@ const mapDispatchToProps = dispatch => {
     login: (email, password) => dispatch(login(email, password)),
     viewAccounts: () => dispatch(viewAccounts()),
     viewTransactions: val => dispatch(viewTransactions(val)),
-    submitTransaction: (val1, val2) =>
-      dispatch(submitTransaction(val1, val2))
+    submitTransaction: (val1, val2) => dispatch(submitTransaction(val1, val2))
   };
 };
 

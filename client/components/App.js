@@ -13,7 +13,6 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-
 import {
   START_PAGE,
   LOGIN_PAGE,

@@ -3,10 +3,17 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Transactions from '../components/transactions';
 import Header from '../components/header';
-import { Button } from 'reactstrap';
+import CreateButtons from '../components/buttons';
 import { Container, Row, Col } from 'react-grid-system';
-
+import { USER_PAGE } from '../constants/pathConstants';
 import {login} from '../actions/loginActions';
+import {
+  USER_LOGOUT,
+  USER_NAVIGATE,
+  BUTTON_LOGOUT,
+  BUTTON_GO_BACK
+} from '../constants/enConstants';
+
 
 class TransDetails extends Component {
   constructor(props) {
@@ -14,14 +21,12 @@ class TransDetails extends Component {
   }
 
   goback = () => {
-    const { history } = this.props;
-    history.push('/viewaccounts');
+    this.props.history.push('/viewaccounts');
   };
 
   logout = () => {
     this.props.login(', ');
-    const { history } = this.props;
-    history.push('/login');
+    this.props.history.push('/login');
   };
 
   components = () => {
@@ -69,18 +74,19 @@ class TransDetails extends Component {
       <div>
         <Header name={this.props.user.client.name} />
         <span>
-          <Button color='danger' className='button' onClick={this.logout}>
-            logout
-          </Button>
+        <CreateButtons
+            type={USER_LOGOUT}
+            push={this.logout}
+            description={BUTTON_LOGOUT}
+          />
         </span>
         <span>
-          <Button
-            color='primary'
-            className='goback_button'
-            onClick={this.goback}
-          >
-            goback
-          </Button>
+        <CreateButtons
+            type={USER_NAVIGATE}
+            path={USER_PAGE}
+            push={this.goback}
+            description={BUTTON_GO_BACK}
+          />
         </span>
         {this.props.transactions.trans ? this.components() : null}
       </div>
