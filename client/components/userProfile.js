@@ -1,27 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { USER_PERMISSION } from '../constants/enConstants';
 
-const UserProfile = props => {
-  //status color change
-  let style;
-  if (props.permission === 'SEND|RECEIVE') {
-    style = {
-      color: 'green'
-    };
-  } else {
-    style = {
-      color: 'red'
-    };
-  }
+const UserProfile = ({ permission, name, id, email, docId }) => {
+  const style = {
+    color: permission === USER_PERMISSION ? 'green' : 'red'
+  };
   return (
     <div className='profile'>
-      <h2 className='welcome'>Welcome, {props.name} to Simple Banking!</h2>
+      <h2 className='welcome'>Welcome, {name} to Simple Banking!</h2>
       <ul className='profileList'>
-        <li className='list'> Customer ID: {props.id} </li>
-        <li className='list'> Email: {props.email} </li>
-        <li className='list'> Doc_ID: {props.docId} </li>
+        <li className='list'> Customer ID: {id} </li>
+        <li className='list'> Email: {email} </li>
+        <li className='list'> Doc_ID: {docId} </li>
         <li className='list' style={style}>
-          {' '}
-          Status: {props.permission}{' '}
+          Status: {permission}
         </li>
       </ul>
     </div>

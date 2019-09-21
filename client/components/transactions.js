@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Row, Col } from 'react-grid-system';
+import { SETTLED } from '../constants/enConstants';
 
-const Transactions = props => {
-  let style;
-  if (props.status === 'SETTLED') {
-    style = {
-      color: 'green'
-    };
-  } else {
-    style = {
-      color: 'red'
-    };
-  }
+const Transactions = ({ id, from, to, amount, currency, status, date }) => {
+  const style = {
+    color: status === SETTLED ? 'green' : 'red'
+  };
   return (
     <div>
       <Container fluid style={{ lineHeight: '40px' }}>
         <Row className='rowContent'>
-          <Col  debug>{props.id}</Col>
-          <Col  debug>{props.from}</Col>
-          <Col  debug>{props.to}</Col>
-          <Col  debug>{props.amount} {props.curr}</Col>
-          <Col  style={style} debug>{props.status}</Col>
-          <Col  debug>{props.date}</Col>
+          <Col debug>{id}</Col>
+          <Col debug>{from}</Col>
+          <Col debug>{to}</Col>
+          <Col debug>
+            {amount} {currency}
+          </Col>
+          <Col style={style} debug>
+            {status}
+          </Col>
+          <Col debug>{date}</Col>
         </Row>
       </Container>
     </div>

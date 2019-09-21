@@ -1,4 +1,10 @@
-import * as types from '../constants/actionTypes';
+import {
+  GET_USER,
+  VIEW_ACCT,
+  VIEW_TRANSACTIONS,
+  GET_NODE_ID,
+  SUBMIT_TRANS
+} from '../constants/actionTypes';
 
 const initialState = {
   user: [],
@@ -8,29 +14,29 @@ const initialState = {
   obj: {}
 };
 
-export default function userReducer(state = initialState, action) {
+const userReducer = (state = initialState, action) =>{
   switch (action.type) {
-    case types.GET_USER:
+    case GET_USER:
       return {
         ...state,
         user: action.payload
       };
-      case types.View_Acct:
+      case VIEW_ACCT:
       return {
         ...state,
         view: action.payload
       };
-      case types.View_Transactions:
+      case VIEW_TRANSACTIONS:
       return {
         ...state,
         transactions: action.payload
       };
-      case types.GET_NODE_ID:
+      case GET_NODE_ID:
       return {
         ...state,
         str: action.payload
       };
-      case types.SUBMIT_TRANS:
+      case SUBMIT_TRANS:
       return {
         ...state,
         str: action.payload,
@@ -41,3 +47,4 @@ export default function userReducer(state = initialState, action) {
   }
 }
 
+export default userReducer

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Header from '../components/header';
-import * as actions from '../actions/index';
+
+import {login} from '../actions/loginActions';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -36,7 +37,9 @@ class LoginPage extends Component {
     }
     return (
       <div className='background'>
-      <Header></Header>
+
+      {/* <Header someProp={path} /> */}
+      <Header/>
       <form name='loginForm'>
         <div className='form-group-collection'>
           <div className='form-group'>
@@ -83,7 +86,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => dispatch(actions.login(email, password))
+    login: (email, password) => dispatch(login(email, password))
   };
 };
 

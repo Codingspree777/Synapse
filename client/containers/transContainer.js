@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import * as actions from '../actions/index';
 import Transactions from '../components/transactions';
 import Header2 from '../components/header2';
 import { Button } from 'reactstrap';
 import { Container, Row, Col } from 'react-grid-system';
+
+import {login} from '../actions/loginActions';
 
 class TransDetails extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class TransDetails extends Component {
   };
 
   content = () => {
+    //TODO: Better varible names
     const convertDate = obj => {
       const a = new Date(obj);
       const b = a.toLocaleTimeString('en-US');
@@ -97,7 +99,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => dispatch(actions.login(email, password))
+    login: (email, password) => dispatch(login(email, password))
   };
 };
 

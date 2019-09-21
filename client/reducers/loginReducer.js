@@ -1,4 +1,8 @@
-import * as types from '../constants/actionTypes';
+import {
+  SET_LOGIN_PENDING,
+  SET_LOGIN_SUCCESS,
+  SET_LOGIN_ERROR,
+} from '../constants/actionTypes';
 
 const initialState = {
   isLoginSuccess: false,
@@ -6,21 +10,21 @@ const initialState = {
   loginError: null
 };
 
-export default function LoginReducer(state = initialState, action) {
+const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.SET_LOGIN_PENDING:
+    case SET_LOGIN_PENDING:
       return {
         ...state,
         isLoginPending: action.payload
       };
 
-    case types.SET_LOGIN_SUCCESS:
+    case SET_LOGIN_SUCCESS:
       return {
         ...state,
         isLoginSuccess: action.payload
       };
 
-    case types.SET_LOGIN_ERROR:
+    case SET_LOGIN_ERROR:
       return {
         ...state,
         loginError: action.payload
@@ -30,3 +34,5 @@ export default function LoginReducer(state = initialState, action) {
       return state;
   }
 }
+
+export default loginReducer;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
+import React from 'react';
+import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 const CreateTransaction = props => {
   return (

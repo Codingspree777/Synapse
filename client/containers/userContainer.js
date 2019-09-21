@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import * as actions from '../actions/index';
 import Header2 from '../components/header2';
 import UserProfile from '../components/userProfile';
 import { Button } from 'reactstrap';
+
+import {login} from '../actions/loginActions';
+import { getUser } from '../actions/userActions.js'
+
 
 class UserDetails extends Component {
   constructor(props) {
@@ -66,8 +69,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUser: () => dispatch(actions.getUser()),
-    login: (email, password) => dispatch(actions.login(email, password))
+    getUser: () => dispatch(getUser()),
+    login: (email, password) => dispatch(login(email, password))
   };
 };
 

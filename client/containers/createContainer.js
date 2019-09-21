@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import * as actions from '../actions/index';
 import Header2 from '../components/header2';
 import CreateTransaction from '../components/createTransaction';
 import { Button } from 'reactstrap';
 
+import {
+  viewAccounts,
+  viewTransactions,
+  submitTransaction,
+} from '../actions/userActions';
+
+import { login } from '../actions/loginActions'
+
 class CreateForm extends Component {
   constructor(props) {
     super(props);
+    //TODO: use redux
     this.state = {
       to: { id: '', type: '' },
       amount: { amount: 0, curr: '' }
     };
   }
+
+  //TODO: Write a utility function to handle history
+    // const handleHistory = (path) => {
+          //get history
+          //push path into history
+    // }
 
   goback = () => {
     const { history } = this.props;
@@ -81,7 +95,6 @@ class CreateForm extends Component {
   };
 
   render() {
-    console.log(this.state);
     const Form = (
       <CreateTransaction
         changeID={this.changeID}
@@ -126,11 +139,11 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => dispatch(actions.login(email, password)),
-    viewAccounts: () => dispatch(actions.viewAccounts()),
-    viewTransactions: val => dispatch(actions.viewTransactions(val)),
+    login: (email, password) => dispatch(login(email, password)),
+    viewAccounts: () => dispatch(viewAccounts()),
+    viewTransactions: val => dispatch(viewTransactions(val)),
     submitTransaction: (val1, val2) =>
-      dispatch(actions.submitTransaction(val1, val2))
+      dispatch(submitTransaction(val1, val2))
   };
 };
 

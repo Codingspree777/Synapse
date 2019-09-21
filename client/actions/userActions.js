@@ -1,20 +1,33 @@
-import * as types from '../constants/actionTypes';
 import axios from 'axios';
+
+import {
+  GET_USER,
+  VIEW_ACCT,
+  VIEW_TRANSACTIONS,
+  GET_NODE_ID,
+  SUBMIT_TRANS
+} from '../constants/actionTypes';
+
+import {
+  GET_USER_DETAILS_API,
+  GET_USER_ACCOUNTS_API,
+  GET_USER_TRANSACTIONS_API
+} from '../constants/apiConstants';
 
 // async action creator with redux thunk
 //doing an API call local server apiRoutes
 export const getUser = () => {
   return dispatch => {
     axios
-      .get('/api/user')
-      .catch(err => {
-        console.log(err);
-      })
+      .get(GET_USER_DETAILS_API)
       .then(response => {
         dispatch({
-          type: types.GET_USER,
+          type: GET_USER,
           payload: response.data
         });
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 };
@@ -22,15 +35,15 @@ export const getUser = () => {
 export const viewAccounts = () => {
   return dispatch => {
     axios
-      .get('/api/view')
-      .catch(err => {
-        console.log(err);
-      })
+      .get(GET_USER_ACCOUNTS_API)
       .then(response => {
         dispatch({
-          type: types.View_Acct,
+          type: VIEW_ACCT,
           payload: response.data
         });
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 };
@@ -39,15 +52,15 @@ export const viewAccounts = () => {
 export const viewTransactions = str => {
   return dispatch => {
     axios
-      .post('/api/transactions', { str })
-      .catch(err => {
-        console.log(err);
-      })
+      .post(GET_USER_TRANSACTIONS_API, { str })
       .then(response => {
         dispatch({
-          type: types.View_Transactions,
+          type: VIEW_TRANSACTIONS,
           payload: response.data
         });
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 };
@@ -55,24 +68,25 @@ export const viewTransactions = str => {
 //Need to have NodeID in store to post transaction
 export const getNode = str => {
   return {
-          type: types.GET_NODE_ID,
-          payload: str
-        } 
+    type: GET_NODE_ID,
+    payload: str
+  };
 };
 
+//TODO: RENAME VARIABLES
 export const submitTransaction = (str, obj) => {
-  console.log(obj)
+  console.log(obj);
   return dispatch => {
     axios
-      .post('/api/submit',  { string:str, info:obj })
-      .catch(err => {
-        console.log(err);
-      })
+      .post(CREATE_TRANSACTION_API, { string: str, info: obj })
       .then(response => {
         dispatch({
-          type: types.SUBMIT_TRANS,
+          type: SUBMIT_TRANS,
           payload: response.data
         });
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 };

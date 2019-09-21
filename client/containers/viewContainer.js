@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import * as actions from '../actions/index';
 import Header2 from '../components/header2';
 import Accounts from '../components/accounts';
 import { Button } from 'reactstrap';
+
+import {login} from '../actions/loginActions';
+import { 
+  getNode,
+  viewAccounts,
+  viewTransactions,
+ } from '../actions/userActions.js'
 
 class ViewDetails extends Component {
   constructor(props) {
@@ -40,6 +46,7 @@ class ViewDetails extends Component {
     history.push('/createtransaction');
   };
 
+  // TODO: Refactor
   content = () => {
     const accountsList = [];
     for (let i = 0; i < this.props.view.nodes.length; i++) {
@@ -53,6 +60,7 @@ class ViewDetails extends Component {
           status={el.allowed}
           balance={el.info.balance.amount}
           curr={el.info.balance.currency}
+          //handleClick={this.handleClick.bind(this)}
         />
       );
       accountsList.push(
@@ -118,10 +126,10 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => dispatch(actions.login(email, password)),
-    viewAccounts: () => dispatch(actions.viewAccounts()),
-    viewTransactions: val => dispatch(actions.viewTransactions(val)),
-    getNode: val => dispatch(actions.getNode(val))
+    login: (email, password) => dispatch(login(email, password)),
+    viewAccounts: () => dispatch(viewAccounts()),
+    viewTransactions: val => dispatch(viewTransactions(val)),
+    getNode: val => dispatch(getNode(val))
   };
 };
 

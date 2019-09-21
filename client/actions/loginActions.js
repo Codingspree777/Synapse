@@ -1,4 +1,8 @@
-import * as types from '../constants/actionTypes';
+import {
+  SET_LOGIN_PENDING,
+  SET_LOGIN_SUCCESS,
+  SET_LOGIN_ERROR,
+} from '../constants/actionTypes';
 
 export const login = (email, password) => {
   return dispatch => {
@@ -6,34 +10,51 @@ export const login = (email, password) => {
     dispatch(setLoginSuccess(false));
     dispatch(setLoginError(null));
 
-    callLoginApi(email, password, error => {
-      dispatch(setLoginPending(false));
-      if (!error) {
-        dispatch(setLoginSuccess(true));
-      } else {
-        dispatch(setLoginError(error));
-      }
-    });
-  };
+  //   callLoginApi(
+  //     email,
+  //     password,
+  //     handleError(error, dispatch)
+  //   );
+  // };
+  callLoginApi(email, password, error => {
+    dispatch(setLoginPending(false));
+    if (!error) {
+      dispatch(setLoginSuccess(true));
+    } else {
+      dispatch(setLoginError(error));
+    }
+  });
+}
 };
 
+// const handleError = (error, dispatch) => {
+//   dispatch(setLoginPending(false));
+
+//   if (!error) {
+//     dispatch(setLoginSuccess(true));
+//   } else {
+//     dispatch(setLoginError(error));
+//   }
+// }
+
+//TODO what is value?
 const setLoginPending = value => {
   return {
-    type: types.SET_LOGIN_PENDING,
+    type: SET_LOGIN_PENDING,
     payload: value
   };
 };
 
 export const setLoginSuccess = value => {
   return {
-    type: types.SET_LOGIN_SUCCESS,
+    type: SET_LOGIN_SUCCESS,
     payload: value
   };
 };
 
 const setLoginError = value => {
   return {
-    type: types.SET_LOGIN_ERROR,
+    type: SET_LOGIN_ERROR,
     payload: value
   };
 };
