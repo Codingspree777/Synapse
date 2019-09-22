@@ -23,6 +23,10 @@ body {
   margin-top: -5%;
 }
 
+#button {
+  width: 285px;
+  margin: -3px;
+}
 .button {
   margin: 1%;
   margin-left: 3%;
@@ -66,15 +70,16 @@ input[type='submit'] {
   width: 80px;
   height: 30px;
   border: 3px solid lightgray;
-  border-radius: 5px;
+  border-radius: 15px;
   font-size: 10px;
   background: white;
 }
 
 .message {
   font-size: 15px;
-  margin-top: 10px;
-  text-align: right;
+  margin-top: -25px;
+  margin-left: 225px;
+  text-align: left;
 }
 ul {
   list-style-type: none;

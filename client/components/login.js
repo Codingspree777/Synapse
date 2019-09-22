@@ -1,42 +1,33 @@
 import React from 'react';
 
-
-const LoginForm = ({onChange, onChange2, email, password }) => {
-  
+const LoginForm = ({
+  onChange,
+  onChange2,
+  email,
+  password,
+  onCLick,
+}) => {
   return (
-     <form name='loginForm'>
-        <div className='form-group-collection'>
-          <div className='form-group'>
-            <label>Email:</label>
-            <input
-              type='email'
-              name='email'
-            onChange={onChange}
-              value={email}
-            />
-          </div>
-
-          <div className='form-group'>
-            <label>Password:</label>
-            <input
-              type='password'
-              name='password'
+    <form name='loginForm'>
+      <div className='form-group-collection'>
+        <div className='form-group'>
+          <label>Email:</label>
+          <input type='email' name='email' onChange={onChange} value={email} />
+        </div>
+        <div className='form-group'>
+          <label>Password:</label>
+          <input
+            type='password'
+            name='password'
             onChange={onChange2}
-             value={password}
-            />
-          </div>
+            value={password}
+          />
         </div>
-        <button className='button' 
-        // onClick={this.submitLogin}
-        >
-          Login
-        </button>
-        <div className='message'>
-          {/* {isLoginPending && <div>Please wait...</div>}
-          {isLoginSuccess && <div>Success.</div>}
-          {loginError && <div>{loginError.message}</div>} */}
-        </div>
-      </form> 
+      </div>
+      <button className='button' id='button' onClick={onCLick}>
+        Login
+      </button>
+    </form>
   );
 };
 
