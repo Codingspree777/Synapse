@@ -104,12 +104,12 @@ router.post('/transactions', (req, res) => {
 router.post('/submit', (req, res) => {
   const post = {
     to: {
-      type: req.body.info.type,
-      id: req.body.info.id
+      type: req.body.accountType,
+      id: req.body.toRecipientID
     },
     amount: {
-      amount: req.body.info.amount,
-      currency: req.body.info.curr
+      amount: req.body.amount,
+      currency: req.body.currency
     }
   };
   const headers = {

@@ -18,7 +18,8 @@ const initialState = {
   accountType: '',
   toRecipientID: '',
   amount: '',
-  currency: ''
+  currency: '',
+  confirmSubmit: ''
 };
 
 const userReducer = (state = initialState, action) => {
@@ -66,7 +67,7 @@ const userReducer = (state = initialState, action) => {
     case SUBMIT_TRANS:
       return {
         ...state,
-        nodeID: action.payload
+        confirmSubmit: action.payload
       };
     default:
       return state;

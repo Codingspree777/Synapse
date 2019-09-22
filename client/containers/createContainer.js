@@ -26,12 +26,6 @@ class CreateForm extends Component {
     super(props);
   }
 
-  //TODO: Write a utility function to handle history
-  // const handleHistory = (path) => {
-  //get history
-  //push path into history
-  // }
-
   goback = () => {
     this.props.history.push('/viewaccounts');
   };
@@ -62,8 +56,14 @@ class CreateForm extends Component {
   };
 
   submit = () => {
-    const {nodeID, toRecipientID, accountType, amount, currency} = this.props;
-    this.props.submitTransaction(nodeID, toRecipientID, accountType, amount, currency);
+    const { nodeID, toRecipientID, accountType, amount, currency } = this.props;
+    this.props.submitTransaction(
+      nodeID,
+      toRecipientID,
+      accountType,
+      amount,
+      currency
+    );
   };
 
   render() {
@@ -121,7 +121,10 @@ const mapDispatchToProps = dispatch => {
     inputAccountType: accountType => dispatch(inputAccountType(accountType)),
     inputAmount: amount => dispatch(inputAmount(amount)),
     inputCurrency: currency => dispatch(inputCurrency(currency)),
-    submitTransaction: (nodeID, toRecipientID, accountType, amount, currency) => dispatch(submitTransaction(nodeID, toRecipientID, accountType, amount, currency))
+    submitTransaction: (nodeID, toRecipientID, accountType, amount, currency) =>
+      dispatch(
+        submitTransaction(nodeID, toRecipientID, accountType, amount, currency)
+      )
   };
 };
 

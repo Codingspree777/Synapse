@@ -15,7 +15,8 @@ import {
 import {
   GET_USER_DETAILS_API,
   GET_USER_ACCOUNTS_API,
-  GET_USER_TRANSACTIONS_API
+  GET_USER_TRANSACTIONS_API,
+  CREATE_TRANSACTION_API
 } from '../constants/apiConstants';
 
 // async action creator with redux thunk
@@ -79,46 +80,57 @@ export const getNode = nodeID => {
 
 export const inputRecipient = toRecipientID => {
   return {
-     type: INPUT_RECIPIENT_ID,
-     payload: toRecipientID,
-   }
- }
+    type: INPUT_RECIPIENT_ID,
+    payload: toRecipientID
+  };
+};
 
- export const inputAccountType = accountType => {
+export const inputAccountType = accountType => {
   return {
-     type: INPUT_RECIPIENT_ACCT_TYPE,
-     payload: accountType,
-   }
- }
+    type: INPUT_RECIPIENT_ACCT_TYPE,
+    payload: accountType
+  };
+};
 
- export const inputAmount = amount => {
+export const inputAmount = amount => {
   return {
-     type: INPUT_AMOUNT,
-     payload: amount,
-   }
- }
+    type: INPUT_AMOUNT,
+    payload: amount
+  };
+};
 
- export const inputCurrency = currency => {
+export const inputCurrency = currency => {
   return {
-     type: INPUT_CURRENCY,
-     payload: currency,
-   }
- }
+    type: INPUT_CURRENCY,
+    payload: currency
+  };
+};
 
-//TODO: RENAME VARIABLES
-export const submitTransaction = (nodeID, toRecipientID, accountType, amount, currency) => {
-  console.log(nodeID, toRecipientID, accountType, amount, currency)
+
+export const submitTransaction = (
+  nodeID,
+  toRecipientID,
+  accountType,
+  amount,
+  currency
+) => {
   return dispatch => {
-    // axios
-    //   .post(CREATE_TRANSACTION_API, { string: str, info: obj })
-    //   .then(response => {
-    //     dispatch({
-    //       type: SUBMIT_TRANS,
-    //       payload: response.data
-    //     });
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axios
+      .post(CREATE_TRANSACTION_API, {
+        nodeID: nodeID,
+        toRecipientID: toRecipientID,
+        accountType: accountType,
+        amount: amount,
+        currency: currency
+      })
+      .then(response => {
+        dispatch({
+          type: SUBMIT_TRANS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 };
