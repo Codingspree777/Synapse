@@ -8,8 +8,10 @@ import { Button } from 'reactstrap';
 import { USER_PAGE } from '../constants/pathConstants';
 import { login } from '../actions/loginActions';
 import {
-  viewAccounts,
-  viewTransactions,
+  inputRecipient,
+  inputAccountType,
+  inputAmount,
+  inputCurrency,
   submitTransaction
 } from '../actions/userActions';
 import {
@@ -22,11 +24,6 @@ import {
 class CreateForm extends Component {
   constructor(props) {
     super(props);
-    //TODO: use redux
-    this.state = {
-      to: { id: '', type: '' },
-      amount: { amount: 0, curr: '' }
-    };
   }
 
   //TODO: Write a utility function to handle history
@@ -44,81 +41,52 @@ class CreateForm extends Component {
     this.props.history.push('/login');
   };
 
-  handleClick = e => {
+  recipientIDchange = e => {
     e.preventDefault();
-    this.props.viewTransactions(e.target.value);
-    const { history } = this.props;
-    history.push('/transactions');
+    this.props.inputRecipient(e.target.value);
   };
 
-  changeID = e => {
+  accounttypeChange = e => {
     e.preventDefault();
-    this.setState({
-      to: {
-        ...this.state.to,
-        id: e.target.value
-      }
-    });
+    this.props.inputAccountType(e.target.value);
   };
 
-  changeType = e => {
+  amtChange = e => {
     e.preventDefault();
-    this.setState({
-      to: {
-        ...this.state.to,
-        type: e.target.value
-      }
-    });
+    this.props.inputAmount(e.target.value);
   };
 
-  changeAmt = e => {
+  currencyChange = e => {
     e.preventDefault();
-    this.setState({
-      amount: {
-        ...this.state.amount,
-        amount: e.target.value
-      }
-    });
-  };
-
-  changeCurr = e => {
-    e.preventDefault();
-    this.setState({
-      amount: {
-        ...this.state.amount,
-        curr: e.target.value
-      }
-    });
+    this.props.inputCurrency(e.target.value);
   };
 
   submit = () => {
-    const obj = this.state.to;
-    const obj2 = this.state.amount;
-    const copyObj = Object.assign(obj, obj2);
-    this.props.submitTransaction(this.props.str, copyObj);
+    const {nodeID, toRecipientID, accountType, amount, currency} = this.props;
+    this.props.submitTransaction(nodeID, toRecipientID, accountType, amount, currency);
   };
 
   render() {
     const Form = (
       <CreateTransaction
-      toRecipientID={this.toRecipientID}
-        changeType={this.changeType}
-        changeAmt={this.changeAmt}
-        changeCurr={this.changeCurr}
+        toRecipientID={this.recipientIDchange}
+        changeType={this.accounttypeChange}
+        changeAmt={this.amtChange}
+        changeCurr={this.currencyChange}
       />
     );
     return (
       <div>
         <Header name={this.props.user.client.name} />
         <span>
-        <CreateButtons
+          <CreateButtons
             type={USER_LOGOUT}
             onClick={this.logout}
             description={BUTTON_LOGOUT}
           />
         </span>
         <span>
-        <CreateButtons
+          <CreateButtons
             type={USER_NAVIGATE}
             path={USER_PAGE}
             onClick={this.goback}
@@ -138,16 +106,22 @@ const mapStateToProps = store => {
   return {
     user: store.user.user,
     view: store.view.view,
-    nodeID: store.nodeID.nodeID
+    nodeID: store.nodeID.nodeID,
+    accountType: store.accountType.accountType,
+    toRecipientID: store.toRecipientID.toRecipientID,
+    amount: store.amount.amount,
+    currency: store.currency.currency
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     login: (email, password) => dispatch(login(email, password)),
-    viewAccounts: () => dispatch(viewAccounts()),
-    viewTransactions: val => dispatch(viewTransactions(val)),
-    submitTransaction: (val1, val2) => dispatch(submitTransaction(val1, val2))
+    inputRecipient: nodeID => dispatch(inputRecipient(nodeID)),
+    inputAccountType: accountType => dispatch(inputAccountType(accountType)),
+    inputAmount: amount => dispatch(inputAmount(amount)),
+    inputCurrency: currency => dispatch(inputCurrency(currency)),
+    submitTransaction: (nodeID, toRecipientID, accountType, amount, currency) => dispatch(submitTransaction(nodeID, toRecipientID, accountType, amount, currency))
   };
 };
 

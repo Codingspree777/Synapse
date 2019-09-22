@@ -5,6 +5,10 @@ import {
   VIEW_ACCT,
   VIEW_TRANSACTIONS,
   GET_NODE_ID,
+  INPUT_RECIPIENT_ID,
+  INPUT_RECIPIENT_ACCT_TYPE,
+  INPUT_AMOUNT,
+  INPUT_CURRENCY,
   SUBMIT_TRANS
 } from '../constants/actionTypes';
 
@@ -50,7 +54,6 @@ export const viewAccounts = () => {
 
 //Need to do a POST instead of a GET, because to pass in the nodeId
 export const viewTransactions = nodeID => {
-  console.log(nodeID)
   return dispatch => {
     axios
       .post(GET_USER_TRANSACTIONS_API, { nodeID })
@@ -74,19 +77,48 @@ export const getNode = nodeID => {
   };
 };
 
+export const inputRecipient = toRecipientID => {
+  return {
+     type: INPUT_RECIPIENT_ID,
+     payload: toRecipientID,
+   }
+ }
+
+ export const inputAccountType = accountType => {
+  return {
+     type: INPUT_RECIPIENT_ACCT_TYPE,
+     payload: accountType,
+   }
+ }
+
+ export const inputAmount = amount => {
+  return {
+     type: INPUT_AMOUNT,
+     payload: amount,
+   }
+ }
+
+ export const inputCurrency = currency => {
+  return {
+     type: INPUT_CURRENCY,
+     payload: currency,
+   }
+ }
+
 //TODO: RENAME VARIABLES
-export const submitTransaction = (str, obj) => {
+export const submitTransaction = (nodeID, toRecipientID, accountType, amount, currency) => {
+  console.log(nodeID, toRecipientID, accountType, amount, currency)
   return dispatch => {
-    axios
-      .post(CREATE_TRANSACTION_API, { string: str, info: obj })
-      .then(response => {
-        dispatch({
-          type: SUBMIT_TRANS,
-          payload: response.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // axios
+    //   .post(CREATE_TRANSACTION_API, { string: str, info: obj })
+    //   .then(response => {
+    //     dispatch({
+    //       type: SUBMIT_TRANS,
+    //       payload: response.data
+    //     });
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   };
 };
