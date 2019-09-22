@@ -1,7 +1,12 @@
 import React from 'react';
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
-const CreateTransaction = ({toRecipientID, changeType, changeAmt, changeCurr}) => {
+const CreateTransaction = ({
+  toRecipientID,
+  changeType,
+  changeAmt,
+  changeCurr
+}) => {
   return (
     <div>
       <h1>Fill in requried fields</h1>

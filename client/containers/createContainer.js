@@ -94,7 +94,12 @@ class CreateForm extends Component {
           />
         </span>
         {Form}
-        <Button color='primary' className='goback_button' onClick={this.submit}>
+        <Button
+          color='primary'
+          className='goback_button'
+          id='submit'
+          onClick={this.submit}
+        >
           Submit
         </Button>
       </div>

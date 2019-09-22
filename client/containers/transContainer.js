@@ -6,14 +6,13 @@ import Header from '../components/header';
 import CreateButtons from '../components/buttons';
 import { Container, Row, Col } from 'react-grid-system';
 import { USER_PAGE } from '../constants/pathConstants';
-import {login} from '../actions/loginActions';
+import { login } from '../actions/loginActions';
 import {
   USER_LOGOUT,
   USER_NAVIGATE,
   BUTTON_LOGOUT,
   BUTTON_GO_BACK
 } from '../constants/enConstants';
-
 
 class TransDetails extends Component {
   constructor(props) {
@@ -74,14 +73,14 @@ class TransDetails extends Component {
       <div>
         <Header name={this.props.user.client.name} />
         <span>
-        <CreateButtons
+          <CreateButtons
             type={USER_LOGOUT}
             onClick={this.logout}
             description={BUTTON_LOGOUT}
           />
         </span>
         <span>
-        <CreateButtons
+          <CreateButtons
             type={USER_NAVIGATE}
             path={USER_PAGE}
             onClick={this.goback}

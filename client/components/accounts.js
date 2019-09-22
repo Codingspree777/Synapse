@@ -2,7 +2,19 @@ import React from 'react';
 import { CREDIT_AND_DEBIT } from '../constants/enConstants';
 import CreateButtons from '../components/buttons';
 
-const Accounts = ({ status, id, balance, currency, name, account_type, description, onClick, value, onClick2, description2}) => {
+const Accounts = ({
+  status,
+  id,
+  balance,
+  currency,
+  name,
+  account_type,
+  description,
+  onClick,
+  value,
+  onClick2,
+  description2
+}) => {
   const style = {
     color: status === CREDIT_AND_DEBIT ? 'green' : 'red'
   };
@@ -17,11 +29,20 @@ const Accounts = ({ status, id, balance, currency, name, account_type, descripti
           Acc. Type: {account_type} Status: {status}
         </li>
       </ul>
-      <CreateButtons onClick={onClick} value={value} description={description} size='sm'/>
-      <CreateButtons onClick={onClick2} value={value} description={description2} size='sm'/>
+      <CreateButtons
+        onClick={onClick}
+        value={value}
+        description={description}
+        size='sm'
+      />
+      <CreateButtons
+        onClick={onClick2}
+        value={value}
+        description={description2}
+        size='sm'
+      />
     </div>
   );
 };
 
 export default Accounts;
-

@@ -50,7 +50,8 @@ class ViewDetails extends Component {
   };
 
   components = () => {
-      const accountsList = this.props.view.nodes.map(el => (  <Accounts
+    const accountsList = this.props.view.nodes.map(el => (
+      <Accounts
         id={el._id}
         value={el._id}
         account_type={el.type}
@@ -62,7 +63,8 @@ class ViewDetails extends Component {
         description={BUTTON_VIEW_TRANSACTIONS}
         onClick2={this.goToCreateTransaction}
         description2={BUTTON_CREATE_TRANSACTIONS}
-      /> ))
+      />
+    ));
     return <div className='viewContainer'>{accountsList}</div>;
   };
 

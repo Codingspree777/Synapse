@@ -1,12 +1,6 @@
 import React from 'react';
 
-const LoginForm = ({
-  onChange,
-  onChange2,
-  email,
-  password,
-  onCLick,
-}) => {
+const LoginForm = ({ onChange, onChange2, email, password, onCLick }) => {
   return (
     <form name='loginForm'>
       <div className='form-group-collection'>

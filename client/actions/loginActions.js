@@ -3,22 +3,22 @@ import {
   VERIFY_PASSWORD,
   SET_LOGIN_PENDING,
   SET_LOGIN_SUCCESS,
-  SET_LOGIN_ERROR,
+  SET_LOGIN_ERROR
 } from '../constants/actionTypes';
 
-export const verifyEmail = (email) => {
- return {
+export const verifyEmail = email => {
+  return {
     type: VERIFY_EMAIL,
-    payload: email,
-  }
-}
+    payload: email
+  };
+};
 
-export const verifyPassword= (password) => {
- return {
+export const verifyPassword = password => {
+  return {
     type: VERIFY_PASSWORD,
-    payload: password,
-  }
-}
+    payload: password
+  };
+};
 
 export const login = (email, password) => {
   return dispatch => {
@@ -26,16 +26,15 @@ export const login = (email, password) => {
     dispatch(setLoginSuccess(false));
     dispatch(setLoginError(null));
 
-  
-  callLoginApi(email, password, error => {
-    dispatch(setLoginPending(false));
-    if (!error) {
-      dispatch(setLoginSuccess(true));
-    } else {
-      dispatch(setLoginError(error));
-    }
-  });
-}
+    callLoginApi(email, password, error => {
+      dispatch(setLoginPending(false));
+      if (!error) {
+        dispatch(setLoginSuccess(true));
+      } else {
+        dispatch(setLoginError(error));
+      }
+    });
+  };
 };
 
 const setLoginPending = boolean => {

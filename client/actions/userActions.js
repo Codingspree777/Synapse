@@ -106,7 +106,6 @@ export const inputCurrency = currency => {
   };
 };
 
-
 export const submitTransaction = (
   nodeID,
   toRecipientID,

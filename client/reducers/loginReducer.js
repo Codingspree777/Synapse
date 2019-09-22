@@ -3,7 +3,7 @@ import {
   SET_LOGIN_PENDING,
   SET_LOGIN_SUCCESS,
   SET_LOGIN_ERROR,
-  VERIFY_PASSWORD,
+  VERIFY_PASSWORD
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -19,12 +19,12 @@ const loginReducer = (state = initialState, action) => {
     case VERIFY_EMAIL:
       return {
         ...state,
-        email: action.payload,
+        email: action.payload
       };
-      case VERIFY_PASSWORD:
+    case VERIFY_PASSWORD:
       return {
         ...state,
-        password: action.payload,
+        password: action.payload
       };
     case SET_LOGIN_PENDING:
       return {
@@ -47,6 +47,6 @@ const loginReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default loginReducer;
