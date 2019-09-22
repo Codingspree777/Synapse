@@ -138,7 +138,7 @@ const mapStateToProps = store => {
   return {
     user: store.user.user,
     view: store.view.view,
-    str: store.str.str
+    nodeID: store.nodeID.nodeID
   };
 };
 

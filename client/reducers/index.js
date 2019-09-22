@@ -8,7 +8,7 @@ const reducers = combineReducers({
   //password: loginReducer,
   user: userReducer,
   view: userReducer,
-  str: userReducer,
+  nodeID: userReducer,
   obj: userReducer,
   transactions: userReducer
 });

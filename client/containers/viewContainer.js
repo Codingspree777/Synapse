@@ -94,7 +94,7 @@ const mapStateToProps = store => {
   return {
     user: store.user.user,
     view: store.view.view,
-    str: store.str.str
+    nodeID: store.nodeID.nodeID
   };
 };
 
@@ -102,8 +102,8 @@ const mapDispatchToProps = dispatch => {
   return {
     login: (email, password) => dispatch(login(email, password)),
     viewAccounts: () => dispatch(viewAccounts()),
-    viewTransactions: val => dispatch(viewTransactions(val)),
-    getNode: val => dispatch(getNode(val))
+    viewTransactions: nodeID => dispatch(viewTransactions(nodeID)),
+    getNode: nodeID => dispatch(getNode(nodeID))
   };
 };
 

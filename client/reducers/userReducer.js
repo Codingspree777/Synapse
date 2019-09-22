@@ -11,7 +11,7 @@ const initialState = {
   view: [],
   transactions: [],
   //rename refractor
-  str: '',
+  nodeID: '',
   obj: {}
 };
 
@@ -35,12 +35,12 @@ const userReducer = (state = initialState, action) => {
     case GET_NODE_ID:
       return {
         ...state,
-        str: action.payload
+        nodeID: action.payload
       };
     case SUBMIT_TRANS:
       return {
         ...state,
-        str: action.payload,
+        nodeID: action.payload,
         obj: action.payload
       };
     default:

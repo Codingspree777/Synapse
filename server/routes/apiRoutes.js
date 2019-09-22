@@ -85,7 +85,7 @@ router.post('/transactions', (req, res) => {
     };
     try {
       return await axios.get(
-        `https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b/nodes/${req.body.str}/trans`,
+        `https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b/nodes/${req.body.nodeID}/trans`,
         { headers }
       );
     } catch (error) {
@@ -119,12 +119,12 @@ router.post('/submit', (req, res) => {
   };
   axios
     .post(
-      `https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b/nodes/${req.body.str}/trans`,
+      `https://uat-api.synapsefi.com/v3.1/users/5d7be9bf7ac0170072e22b4b/nodes/${req.body.nodeID}/trans`,
       { post },
       { headers }
     )
     .then(function(response) {
-      console.log(response.data);
+      res.send(response.data);
     })
     .catch(function(error) {
       console.log(error);

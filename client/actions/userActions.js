@@ -49,10 +49,11 @@ export const viewAccounts = () => {
 };
 
 //Need to do a POST instead of a GET, because to pass in the nodeId
-export const viewTransactions = str => {
+export const viewTransactions = nodeID => {
+  console.log(nodeID)
   return dispatch => {
     axios
-      .post(GET_USER_TRANSACTIONS_API, { str })
+      .post(GET_USER_TRANSACTIONS_API, { nodeID })
       .then(response => {
         dispatch({
           type: VIEW_TRANSACTIONS,
@@ -66,10 +67,10 @@ export const viewTransactions = str => {
 };
 
 //Need to have NodeID in store to post transaction
-export const getNode = str => {
+export const getNode = nodeID => {
   return {
     type: GET_NODE_ID,
-    payload: str
+    payload: nodeID
   };
 };
 
