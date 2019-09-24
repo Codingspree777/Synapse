@@ -4,7 +4,6 @@ import { withRouter } from 'react-router';
 import Header from '../components/header';
 import UserProfile from '../components/userProfile';
 import CreateButtons from '../components/buttons';
-
 import { login } from '../actions/loginActions';
 import { getUser } from '../actions/userActions.js';
 
@@ -14,6 +13,10 @@ import {
   BUTTON_LOGOUT,
   BUTTON_VIEW_ACCOUNTS
 } from '../constants/enConstants';
+
+// const historyPath = (history, path) => {
+//  history.push(path)
+// }
 
 class UserDetails extends Component {
   constructor(props) {

@@ -65,7 +65,7 @@ class ViewDetails extends Component {
         description2={BUTTON_CREATE_TRANSACTIONS}
       />
     ));
-    return <div className='viewContainer'>{accountsList}</div>;
+    return <div className='view-container'>{accountsList}</div>;
   };
 
   render() {

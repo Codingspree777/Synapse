@@ -9,7 +9,7 @@ const Transactions = ({ id, from, to, amount, currency, status, date }) => {
   return (
     <div>
       <Container fluid style={{ lineHeight: '40px' }}>
-        <Row className='rowContent'>
+        <Row className='row-content'>
           <Col debug>{id}</Col>
           <Col debug>{from}</Col>
           <Col debug>{to}</Col>

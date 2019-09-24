@@ -1,16 +1,16 @@
 import React from 'react';
-import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 
 const CreateTransaction = ({
   toRecipientID,
   changeType,
   changeAmt,
-  changeCurr
+  changeCurr,
+  submit
 }) => {
   return (
-    <div>
-      <h1>Fill in requried fields</h1>
-      <div>
+    <div className='create-form'>
+      <p className='box-header'>Fill in requried fields</p>
         <InputGroup>
           <InputGroupAddon addonType='prepend'>To:</InputGroupAddon>
           <Input onChange={toRecipientID} placeholder='User ID' />
@@ -33,7 +33,14 @@ const CreateTransaction = ({
           <InputGroupAddon addonType='prepend'>Currency:</InputGroupAddon>
           <Input onChange={changeCurr} placeholder='USD' />
         </InputGroup>
-      </div>
+        <Button
+          color='primary'
+          className='goback_button'
+          id='submit'
+          onClick={submit}
+        >
+          Submit
+        </Button>
     </div>
   );
 };

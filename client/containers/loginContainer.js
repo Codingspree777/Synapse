@@ -24,16 +24,17 @@ class LoginPage extends Component {
 
   submitLogin = e => {
     e.preventDefault();
-    this.props.login(this.props.email, this.props.password);
+    const {email, password} = this.props;
+    this.props.login(email, password);
   };
 
   render() {
     let { isLoginSuccess, isLoginPending, loginError, history } = this.props;
     const formInput = (
       <LoginForm
-        onChange={this.emailChange}
-        onChange2={this.passwordChange}
-        onCLick={this.submitLogin}
+        emailChange={this.emailChange}
+        passwordChange={this.passwordChange}
+        submit={this.submitLogin}
         loginError={loginError}
         isLoginPending={isLoginPending}
         isLoginSuccess={isLoginSuccess}

@@ -51,10 +51,10 @@ class TransDetails extends Component {
     ));
 
     return (
-      <div className='transContainer'>
+      <div className='trans-container'>
         <h3>Transactions Details</h3>
         <Container fluid style={{ lineHeight: '40px' }}>
-          <Row className='rowHeader'>
+          <Row className='row-header'>
             <Col debug>TRANSACTION_ID</Col>
             <Col debug>FROM</Col>
             <Col debug>TO</Col>

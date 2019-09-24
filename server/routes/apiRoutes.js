@@ -26,9 +26,9 @@ router.get('/user', (req, res) => {
   const seeResults = async () => {
     const results = await getApi();
     res.send(results.data);
-    getoAuth(results.data.refresh_token);
+    getOAuth(results.data.refresh_token);
   };
-  const getoAuth = str => {
+  const getOAuth = str => {
     const headers = {
       'X-SP-GATEWAY': apiConfig.clientKey,
       'X-SP-USER-IP': apiConfig.IPkey,

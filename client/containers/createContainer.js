@@ -73,6 +73,7 @@ class CreateForm extends Component {
         changeType={this.accounttypeChange}
         changeAmt={this.amtChange}
         changeCurr={this.currencyChange}
+        submit={this.submit}
       />
     );
     return (
@@ -94,14 +95,6 @@ class CreateForm extends Component {
           />
         </span>
         {Form}
-        <Button
-          color='primary'
-          className='goback_button'
-          id='submit'
-          onClick={this.submit}
-        >
-          Submit
-        </Button>
       </div>
     );
   }
