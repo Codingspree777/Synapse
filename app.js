@@ -26,7 +26,7 @@ app.use(cookieParser())
 app.use('/api', apiRoutes);
 
 app.use('/', (req, res) => {
-  res.send('reached root route');
+  res.send('./client/index.js');
 });
 
 
