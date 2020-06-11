@@ -1,4 +1,4 @@
-const app = require('../../app');
+const app = require('../../client/index');
 const http = require('http');
 
 let PORT = process.env.PORT || 3000;
