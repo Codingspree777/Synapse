@@ -4,7 +4,7 @@
   "description": "wallet loan for you",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/bin/www.js",
+    "dev-start": "nodemon server/bin/www.js",
     "dev-client": "webpack-dev-server",
     "build": "webpack"
   },
@@ -44,6 +44,8 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
+    "concurrently": "^5.2.0",
+    "http-server": "^0.12.3",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
