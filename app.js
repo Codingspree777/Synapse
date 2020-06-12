@@ -1,4 +1,3 @@
-// 2nd connecting up express to PG
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
