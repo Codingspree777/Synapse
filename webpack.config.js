@@ -4,10 +4,12 @@ module.exports = {
   entry: './client/index.js',
   mode: 'development',
   devServer: {
-    publicPath: '/build/',
+    inline: true,
+    port: 8080,
     proxy: {
       '/api': 'http://localhost:3000',
     },
+    publicPath: "localhost:8080/build",
     historyApiFallback: true,
   },
   devtool: 'source-map',
@@ -31,6 +33,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/build/',
     filename: 'bundle.js'
   }
 };
