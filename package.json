@@ -4,7 +4,7 @@
   "description": "wallet loan for you",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/bin/www.js",
+    "start": "node server/bin/www.js",
     "dev-client": "webpack-dev-server",
     "build": "webpack"
   },
